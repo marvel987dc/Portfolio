@@ -9,8 +9,8 @@ const IntroSection = styled.section`
 `;
 
 const IntroMessage = styled.h1`
-  font-size: 2rem;
-  margin: 0;
+  font-size: 2.5rem;
+  margin-left: 50px;
   color: ${(props) => props.color};
 `;
 
@@ -28,6 +28,23 @@ const Description = styled.p`
   margin-left: 50px;
 `;
 
+const Button = styled.a`
+  background: linear-gradient(270deg, #13adc7 0%, #6978d1 66.67%, #945dd6 100%);
+  width: 10%;
+  border-radius: 25px;
+  height: 50px;
+  margin-left: 70px;
+  color: white;
+  font-size: 15px;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 50px;
+  text-decoration: none;
+
+  &:hover {
+    background: linear-gradient(270deg, #13adc7 0%, #6978d1 80%, #945dd6 120%);
+  }
+`;
 const Intro = () => {
   const date = new Date();
   const hour = date.getHours();
@@ -48,7 +65,7 @@ const Intro = () => {
 
   return (
     <IntroSection id="intro">
-      <Title color={color}>{message}</Title>
+      <IntroMessage color={color}>{message}</IntroMessage>
       <Title>Welcome to my portfolio!</Title>
       <Description>
         Aspiring AI-Software Engineering student with strong skills in C#,
@@ -58,6 +75,12 @@ const Intro = () => {
         in designing webpages, games, and forms, with a focus on organization,
         problem-solving, and innovation.
       </Description>
+      <Button
+        href="./Data/Juan_Barrero_ResumeCopy.pdf"
+        download="Juan_Barrero_ResumeCopy.pdf"
+      >
+        Resume
+      </Button>
     </IntroSection>
   );
 };
