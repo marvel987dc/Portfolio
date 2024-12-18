@@ -51,7 +51,12 @@ const Intro = () => {
       <Title color={color}>{message}</Title>
       <Title>Welcome to my portfolio!</Title>
       <Description>
-        Olá! Sou um desenvolvedor apaixonado por criar soluções web inovadoras e eficientes. Aqui você encontrará alguns dos meus projetos recentes e informações para entrar em contato comigo.
+        Aspiring AI-Software Engineering student with strong skills in C#,
+        JavaScript, React, Python, Bash, HTML, CSS, Tailwind, Git, SQL, and
+        Linux. Passionate about machine learning, with experience in projects
+        involving algorithms like Naive Bayes and Logistic Regression. Skilled
+        in designing webpages, games, and forms, with a focus on organization,
+        problem-solving, and innovation.
       </Description>
     </IntroSection>
   );
