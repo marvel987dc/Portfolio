@@ -1,18 +1,20 @@
 import styled from "styled-components";
+import "./About.css"
 
 const IntroSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
   background-color: #0f1624;
   gap: 30px;
 `;
 
 const Title = styled.h2`
-  font-size: 2.5rem;
-  margin-right: 820px;
-  color: white;
+  font-size: 2.5em;
+  color: #fff;
+  margin-bottom: 20px;
 `;
 
 const Description = styled.p`
@@ -30,7 +32,7 @@ const Description = styled.p`
 const Intro = () => {
   return (
     <IntroSection id="about">
-      <Title>About me</Title>
+      <Title className="Title">About me</Title>
       <Description>
         Hi, I'm Juan. I came to Canada from Colombia to pursue my dream of
         becoming a software engineer and to showcase my skills in design,

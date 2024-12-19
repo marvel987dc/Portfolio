@@ -3,10 +3,12 @@ import styled from "styled-components";
 import "./Intro.css";
 
 const IntroSection = styled.section`
-  display: flex;
+   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
+  align-items: center;
   background-color: #0f1624;
+  gap: 30px;
 `;
 
 const IntroMessage = styled.h1`
@@ -48,11 +50,12 @@ const Button = styled.a`
 `;
 
 const CharaPic = styled.img`
+ 
   width: 200px;
   height: 200px;
   border-radius: 50%;\
-  margin-top: -250px;
-  margin-left: 750px;
+  margin-left: 50px;
+  
 `;
 
 const Intro = () => {
@@ -91,6 +94,10 @@ const Intro = () => {
   return (
     <IntroSection id="intro">
       <IntroMessage color={color}>{message}</IntroMessage>
+      <CharaPic
+        src="./src/assets/Pics/animalCrossingChara.png"
+        className="CharaImg"
+      />
 
       <Title className="welcome">{typedText}</Title>
       <Description>
@@ -107,10 +114,6 @@ const Intro = () => {
       >
         Resume
       </Button>
-      <CharaPic
-        src="./src/assets/Pics/animalCrossingChara.png"
-        className="CharaImg"
-      />
     </IntroSection>
   );
 };
