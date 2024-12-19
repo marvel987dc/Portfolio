@@ -30,12 +30,6 @@ export default function Contact() {
     border-radius: 4px;
     font-size: 1rem;
     margin-left: 20px;
-
-    &:hover {
-      background-color:rgb(209, 209, 209);
-      color: #0f1624;
-    }
-
   `;
 
   return (
