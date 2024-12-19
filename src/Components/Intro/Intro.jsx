@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import "./Intro.css";
 
@@ -56,6 +56,8 @@ const CharaPic = styled.img`
 `;
 
 const Intro = () => {
+  const [typedText, setTypedText] = useState("");
+  const [currentIndex, setCurrentIndex] = useState(0);
   const date = new Date();
   const hour = date.getHours();
 
@@ -73,11 +75,24 @@ const Intro = () => {
     color = "red";
   }
 
+  useEffect(() => {
+    const text = "Welcome to my portfolio!";
+    const intervalId = setInterval(() => {
+      if (currentIndex < text.length) {
+        setTypedText((prev) => prev + text[currentIndex]);
+      } else {
+        clearInterval(intervalId);
+      }
+      setCurrentIndex((prev) => prev + 1);
+    }, 100);
+    return () => clearInterval(intervalId);
+  }, [currentIndex]);
+
   return (
     <IntroSection id="intro">
       <IntroMessage color={color}>{message}</IntroMessage>
-      
-      <Title className="welcome">Welcome to my portfolio!</Title>
+
+      <Title className="welcome">{typedText}</Title>
       <Description>
         Aspiring AI-Software Engineering student with strong skills in C#,
         JavaScript, React, Python, Bash, HTML, CSS, Tailwind, Git, SQL, and
@@ -92,7 +107,10 @@ const Intro = () => {
       >
         Resume
       </Button>
-      <CharaPic src="./src/assets/Pics/animalCrossingChara.png" className="CharaImg"/>
+      <CharaPic
+        src="./src/assets/Pics/animalCrossingChara.png"
+        className="CharaImg"
+      />
     </IntroSection>
   );
 };
