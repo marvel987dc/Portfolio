@@ -46,9 +46,10 @@ export default function Contact() {
           Do you want to discuss or know something about me? Feel welcome to
           send me a message!!{" "}
         </ContactDescription>
-        <ContactButton className="ContactB" href="mailto:leo_deplay@outlook.com.com">
-          Enviar E-mail
+        <ContactButton className="ContactB" href="mailto:juanbarrero2005@hotmail.com">
+        Hotmail
         </ContactButton>
+        <ContactButton className="ContactB2" href=" https://wa.me/14379923653">Whatsapp</ContactButton>
       </ContactSection>
     </div>
   );

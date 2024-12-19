@@ -23,9 +23,9 @@ const Description = styled.p`
   margin-left: 50px;
 `;
 
-const Separator = styled.img`
-  width: 100%;
-  `;
+// const Separator = styled.img`
+//   width: 100%;
+//   `;
 
 const Intro = () => {
   return (
@@ -38,7 +38,7 @@ const Intro = () => {
         semester at Centennial College. Beyond coding, I enjoy playing the
         guitar, drawing in my free time, and watching movies.
       </Description>
-      <Separator src="./src/assets/Pics/separator.png" />
+      {/* <Separator src="./src/assets/Pics/separator.png" /> */}
     </IntroSection>
   );
 };
