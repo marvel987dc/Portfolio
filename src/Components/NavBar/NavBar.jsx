@@ -59,14 +59,14 @@ export default function Header() {
     <Title className="name">Juan Barrero</Title>
     <Subtitle>AI Software Engineering - Student - Centennial College</Subtitle>
     <Nav>
-        <NavLink href="#projects">Proyects</NavLink>
+        <NavLink href="#projects">Projects</NavLink>
         <NavLink href="#about">About</NavLink>
         <NavLink href="#contact">Contact</NavLink>
         <NavLink href="#technologies">Languages</NavLink>
-        <NavLink2 href="https://github.com/leleo-arch">
+        <NavLink2 href="https://github.com/marvel987dc">
         <Image src="./src/assets/Pics/github.png"  alt="git"/>
         </NavLink2>
-        <NavLink2  href="https://www.linkedin.com/in/leonardo-soares-1842b32b0/" >
+        <NavLink2  href="https://linkedin.com/in/juan-barrero-66b407290" >
         <Image  src="./src/assets/Pics/Linkedin.png"  alt="linkedin"/>
         </NavLink2>
     </Nav>
