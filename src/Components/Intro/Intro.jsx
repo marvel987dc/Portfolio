@@ -76,7 +76,8 @@ const Intro = () => {
   return (
     <IntroSection id="intro">
       <IntroMessage color={color}>{message}</IntroMessage>
-      <Title>Welcome to my portfolio!</Title>
+      
+      <Title className="welcome">Welcome to my portfolio!</Title>
       <Description>
         Aspiring AI-Software Engineering student with strong skills in C#,
         JavaScript, React, Python, Bash, HTML, CSS, Tailwind, Git, SQL, and

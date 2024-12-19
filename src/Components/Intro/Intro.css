@@ -20,3 +20,12 @@
     animation: alternate 0.5s linear infinite;
 
 }
+
+.welcome{
+    font-family: "Doto", serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-variation-settings:
+      "ROND" 0;
+}
