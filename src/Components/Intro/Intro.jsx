@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import "./Intro.css";
 
 const IntroSection = styled.section`
   display: flex;
@@ -45,6 +46,15 @@ const Button = styled.a`
     background: linear-gradient(270deg, #13adc7 0%, #6978d1 80%, #945dd6 120%);
   }
 `;
+
+const CharaPic = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;\
+  margin-top: -250px;
+  margin-left: 750px;
+`;
+
 const Intro = () => {
   const date = new Date();
   const hour = date.getHours();
@@ -54,10 +64,10 @@ const Intro = () => {
 
   if (hour < 12) {
     message = "Good morning ☀️";
-    color = "green";
+    color = "yellow";
   } else if (hour < 18) {
     message = "Good afternoon 🌇";
-    color = "orange";
+    color = "white";
   } else {
     message = "Good evening 🌑";
     color = "red";
@@ -81,6 +91,7 @@ const Intro = () => {
       >
         Resume
       </Button>
+      <CharaPic src="./src/assets/Pics/animalCrossingChara.png" className="CharaImg"/>
     </IntroSection>
   );
 };
