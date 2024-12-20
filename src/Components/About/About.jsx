@@ -3,15 +3,16 @@ import "./About.css"
 
 const IntroSection = styled.section`
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: center;  
   margin-top: 50px;
   background-color: #0f1624;
   gap: 30px;
 `;
 
 const Title = styled.h2`
+  margin-left: 50px;
   font-size: 2.5em;
   color: #fff;
   margin-bottom: 20px;

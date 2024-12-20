@@ -3,13 +3,17 @@ import "./Contact.css";
 
 export default function Contact() {
   const ContactSection = styled.section`
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
     padding: 2rem 0;
     text-align: center;
     background-color: #0f1624;
   `;
 
   const ContactTitle = styled.h2`
-    font-size: 2rem;
+    font-size: 2.5em;
     margin-bottom: 2rem;
     color: white;
   `;

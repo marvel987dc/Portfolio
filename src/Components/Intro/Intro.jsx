@@ -3,7 +3,7 @@ import styled from "styled-components";
 import "./Intro.css";
 
 const IntroSection = styled.section`
-   display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -12,14 +12,12 @@ const IntroSection = styled.section`
 `;
 
 const IntroMessage = styled.h1`
-  font-size: 2.5rem;
-  margin-left: 50px;
+  font-size: 2rem;
   color: ${(props) => props.color};
 `;
 
 const Title = styled.h2`
   font-size: 2.5rem;
-  margin-left: 50px;
   color: white;
 `;
 
@@ -28,7 +26,6 @@ const Description = styled.p`
   max-width: 600px;
   margin-top: -10px;
   color: white;
-  margin-left: 50px;
 `;
 
 const Button = styled.a`
@@ -36,7 +33,7 @@ const Button = styled.a`
   width: 10%;
   border-radius: 25px;
   height: 50px;
-  margin-left: 70px;
+  margin-left: 50px;
   color: white;
   font-size: 15px;
   margin-top: 10px;
@@ -54,7 +51,6 @@ const CharaPic = styled.img`
   width: 200px;
   height: 200px;
   border-radius: 50%;\
-  margin-left: 50px;
   
 `;
 
@@ -69,13 +65,10 @@ const Intro = () => {
 
   if (hour < 12) {
     message = "Good morning ☀️";
-    color = "yellow";
   } else if (hour < 18) {
     message = "Good afternoon 🌇";
-    color = "white";
   } else {
     message = "Good evening 🌑";
-    color = "red";
   }
 
   useEffect(() => {
@@ -109,6 +102,7 @@ const Intro = () => {
         problem-solving, and innovation.
       </Description>
       <Button
+        className="resumeButton"
         href="./Data/Juan_Barrero_ResumeCopy.pdf"
         download="Juan_Barrero_ResumeCopy.pdf"
       >
