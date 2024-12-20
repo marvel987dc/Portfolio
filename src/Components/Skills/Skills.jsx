@@ -25,22 +25,11 @@ const technologies = [
   { name: "Figma", icon: "https://img.icons8.com/color/48/000000/figma.png" },
 ];
 
-const fadeIn = keyframes`
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-`;
 
 const LanguagesWrapper = styled.section`
   padding: 60px 20px;
   background-color: #0f1624;
   text-align: center;
-  animation: ${fadeIn} 1s ease forwards;
 `;
 
 const Title = styled.h2`
@@ -65,15 +54,13 @@ const TechGrid = styled.div`
 `;
 
 const TechItem = styled.div`
-  background-color: #0f1624;
+background-color: #0f1624;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 8px rgb(255, 255, 255);
   transition: transform 0.3s, box-shadow 0.3s;
   width: 120px;
   text-align: center;
-  animation: ${fadeIn} 0.5s ease forwards;
-  animation-delay: ${(props) => props.index * 0.1}s;
 
   &:hover {
     transform: translateY(-10px) scale(1.05);
