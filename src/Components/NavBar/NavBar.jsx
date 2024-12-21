@@ -3,6 +3,9 @@ import styled from "styled-components";
 import "./NavBar.css";
 
 const HeaderWrapper = styled.header`
+ display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   width: 100%;
   background-color: #0f1624;
@@ -20,6 +23,7 @@ const Subtitle = styled.p`
 `;
 
 const Nav = styled.nav`
+  display: flex;
   margin-top: 20px;
 `;
 

@@ -13,6 +13,8 @@ const IntroSection = styled.section`
 `;
 
 const IntroMessage = styled.h1`
+align-self: center;
+  margin-right: 50px;
   font-size: 2rem;
   color: ${(props) => props.color};
 `;
@@ -48,8 +50,8 @@ const Button = styled.a`
 `;
 
 const CharaPic = styled.img`
-// flex: 1;
-//  margin-left: 50px;
+ align-self: center;
+  margin-right: 50px;
   width: 200px;
   height: 200px;
   border-radius: 50%;\

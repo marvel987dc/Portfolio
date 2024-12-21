@@ -31,22 +31,21 @@ const GalleryTitle = styled.h2`
 
 const ProjectsCards = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
   box-sizing: border-box;
-  display: grid;
-  position: relative;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 100px;
   max-width: 1100px;
-  margin: 0 auto;
 `;
 
 const ProjectCard = styled.div`
   display: flex;
   background: #0f1624;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   text-align: start;
   overflow: hidden;
   border-radius: 0.625rem;
@@ -66,8 +65,6 @@ const ProjectImage = styled(LazyLoadImage)`
   justify-content: center;
   align-items: center;
   width: 90px;
-  justify-content: center;
-  margin-left: 50px;
   height: auto;
   margin-top: 20px;
   border-bottom: 1px solid #ffffff;
@@ -86,8 +83,9 @@ const ProjectTitle = styled.h3`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   font-size: 1.4em;
-  margin-left: 15px;
+  // margin-left: 15px;
   text-align: center;
   color: #fff;
   margin-bottom: 20px;
@@ -97,6 +95,7 @@ const ProjectDescription = styled.p`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   font-size: 1em;
   font-weight: 300;
   text-align: center;
@@ -106,10 +105,11 @@ const ProjectDescription = styled.p`
 `;
 
 const ProjectButton = styled.a`
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 10px 20px;
-  margin-top: 10px;
-  margin-left: 40px;
   font-size: 0.9em;
   color: #fff;
   background: linear-gradient(270deg, #13adc7 0%, #6978d1 66.67%, #945dd6 100%);
@@ -120,9 +120,9 @@ const ProjectButton = styled.a`
   &:hover {
     background: linear-gradient(
       270deg,
-      #13adc7 0%,
-      #6978d1 66.67%,
-      #945dd6 100%
+      rgb(23, 202, 234) 0%,
+      rgb(89, 110, 228) 66.67%,
+      rgb(133, 64, 217) 100%
     );
   }
 `;
@@ -130,7 +130,7 @@ const ProjectButton = styled.a`
 const projects = [
   {
     title: "Blackjack JS",
-    description: "A simple blackjack game made with HTML, CSS, and JavaScript.",
+    description: "Blackjack game made with HTML, CSS, and JavaScript.",
     languages: "HTML, CSS, JavaScript",
     image:
       "https://www.shutterstock.com/image-vector/blackjack-hand-spades-black-jack-600nw-2122961363.jpg",
@@ -139,7 +139,7 @@ const projects = [
 
   {
     title: "API News",
-    description: "A simple news app that fetches data from the News API.",
+    description: "News app that fetches data from the News API.",
     languages: "HTML, CSS, JavaScript",
     image:
       "https://static.vecteezy.com/system/resources/previews/025/926/993/non_2x/world-news-flat-icon-news-symbol-logo-illustration-vector.jpg",
@@ -148,7 +148,7 @@ const projects = [
 
   {
     title: "Python Slot Machine",
-    description: "A simple slot machine game made with Python.",
+    description: " Slot machine game made with Python.",
     languages: "Python",
     image:
       "https://media.istockphoto.com/id/522001436/vector/simple-slot-machine-icons.jpg?s=612x612&w=0&k=20&c=B4J2YyZEOtbll6z7hUvOAWhN0J2UyWSv8s0pXhYhmOs=",
@@ -157,12 +157,20 @@ const projects = [
 
   {
     title: "JavaFX Form Database",
-    description:
-      "A simple form that saves data to a database made with JavaFX.",
+    description: "Form that saves data to a database made with JavaFX.",
     languages: "Java, JavaFX",
     image:
       "https://static.vecteezy.com/system/resources/previews/040/353/749/non_2x/online-form-icon-in-logotype-vector.jpg",
     link: "https://github.com/marvel987dc/Database_form-",
+  },
+
+  {
+    title: "Trivia Test",
+    description: "Trivia game made with React.",
+    languages: "HTML, CSS, JavaScript(React)",
+    image:
+      "https://static.vecteezy.com/system/resources/previews/023/911/518/non_2x/inspection-icon-check-illustration-symbol-examination-sign-test-logo-vector.jpg",
+    link: "https://github.com/marvel987dc/trivia_test-",
   },
 ];
 
@@ -179,9 +187,9 @@ export default function ProjectGallery() {
               alt={project.title}
               effect="blur"
             />
+            <ProjectTitle className="cardTitle">{project.title}</ProjectTitle>
+            <ProjectDescription>{project.description}</ProjectDescription>
             <ProjectContent>
-              <ProjectTitle className="cardTitle">{project.title}</ProjectTitle>
-              <ProjectDescription>{project.description}</ProjectDescription>
               <ProjectButton className="cardButton" href={project.link}>
                 GitHub
               </ProjectButton>
