@@ -6,6 +6,7 @@ const IntroSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 25px;
   align-items: center;
   background-color: #0f1624;
   gap: 30px;
@@ -33,7 +34,7 @@ const Button = styled.a`
   width: 10%;
   border-radius: 25px;
   height: 50px;
-  margin-left: 50px;
+  margin-left: 25px;
   color: white;
   font-size: 15px;
   margin-top: 10px;
@@ -47,7 +48,8 @@ const Button = styled.a`
 `;
 
 const CharaPic = styled.img`
- 
+// flex: 1;
+//  margin-left: 50px;
   width: 200px;
   height: 200px;
   border-radius: 50%;\

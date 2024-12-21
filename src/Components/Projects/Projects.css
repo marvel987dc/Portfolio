@@ -1,0 +1,12 @@
+
+.card > *{
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.cardTitle {
+    position: relative;
+    width: fit-content;
+    width: -moz-fit-content; 
+  }
+  

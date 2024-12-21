@@ -59,7 +59,7 @@ background-color: #0f1624;
   padding: 20px;
   box-shadow: 0 2px 8px rgb(255, 255, 255);
   transition: transform 0.3s, box-shadow 0.3s;
-  width: 120px;
+  width: 150px;
   text-align: center;
 
   &:hover {
@@ -69,7 +69,6 @@ background-color: #0f1624;
 `;
 
 const TechIcon = styled.img`
-  max-width: 100%;
   height: auto;
   margin-bottom: 10px;
 `;
