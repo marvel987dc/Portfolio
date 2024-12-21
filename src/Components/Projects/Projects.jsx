@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -31,18 +30,21 @@ const GalleryTitle = styled.h2`
 `;
 
 const ProjectsCards = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
   display: grid;
   position: relative;
-  align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 100px;
   max-width: 1100px;
   margin: 0 auto;
 `;
 
 const ProjectCard = styled.div`
-  background: #0f1624;
   display: flex;
+  background: #0f1624;
   flex-direction: column;
   justify-content: center;
   text-align: start;
@@ -60,33 +62,45 @@ const ProjectCard = styled.div`
 `;
 
 const ProjectImage = styled(LazyLoadImage)`
-  width: 90px;
   display: flex;
   justify-content: center;
-  margin-left: 110px;
+  align-items: center;
+  width: 90px;
+  justify-content: center;
+  margin-left: 50px;
   height: auto;
   margin-top: 20px;
   border-bottom: 1px solid #ffffff;
   transition: transform 0.3s ease-in-out;
-
-  &:hover {
-    transform: scale(1.05);
-  }
 `;
 
 const ProjectContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 20px;
   text-align: start;
 `;
 
 const ProjectTitle = styled.h3`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-size: 1.4em;
+  margin-left: 15px;
+  text-align: center;
   color: #fff;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `;
 
 const ProjectDescription = styled.p`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-size: 1em;
+  font-weight: 300;
+  text-align: center;
+
   color: #fff;
   margin-bottom: 20px;
 `;
@@ -94,7 +108,8 @@ const ProjectDescription = styled.p`
 const ProjectButton = styled.a`
   display: inline-block;
   padding: 10px 20px;
-  margin-left: 90px;
+  margin-top: 10px;
+  margin-left: 40px;
   font-size: 0.9em;
   color: #fff;
   background: linear-gradient(270deg, #13adc7 0%, #6978d1 66.67%, #945dd6 100%);
@@ -112,39 +127,11 @@ const ProjectButton = styled.a`
   }
 `;
 
-const Modal = styled.div`
-  display: ${(props) => (props.isOpen ? "flex" : "none")};
-  position: fixed;
-  width: 400px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  gap: 10px;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-`;
-
-const ModalOverlay = styled.div`
-  display: ${(props) => (props.isOpen ? "block" : "none")};
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-`;
-
 const projects = [
   {
     title: "Blackjack JS",
     description: "A simple blackjack game made with HTML, CSS, and JavaScript.",
+    languages: "HTML, CSS, JavaScript",
     image:
       "https://www.shutterstock.com/image-vector/blackjack-hand-spades-black-jack-600nw-2122961363.jpg",
     link: "https://github.com/marvel987dc/JS-Blackjack?tab=readme-ov-file",
@@ -153,6 +140,7 @@ const projects = [
   {
     title: "API News",
     description: "A simple news app that fetches data from the News API.",
+    languages: "HTML, CSS, JavaScript",
     image:
       "https://static.vecteezy.com/system/resources/previews/025/926/993/non_2x/world-news-flat-icon-news-symbol-logo-illustration-vector.jpg",
     link: "https://github.com/marvel987dc/API-NEWS",
@@ -161,8 +149,9 @@ const projects = [
   {
     title: "Python Slot Machine",
     description: "A simple slot machine game made with Python.",
+    languages: "Python",
     image:
-      "https://www.jackpotparty.com/static/c6f9ac719ed8038d53a693af38b285f4/7c5e8/slots_symbols.png",
+      "https://media.istockphoto.com/id/522001436/vector/simple-slot-machine-icons.jpg?s=612x612&w=0&k=20&c=B4J2YyZEOtbll6z7hUvOAWhN0J2UyWSv8s0pXhYhmOs=",
     link: "https://github.com/marvel987dc/Python-slot-machine",
   },
 
@@ -170,50 +159,22 @@ const projects = [
     title: "JavaFX Form Database",
     description:
       "A simple form that saves data to a database made with JavaFX.",
-    image: "https://static.thenounproject.com/png/87088-200.png",
+    languages: "Java, JavaFX",
+    image:
+      "https://static.vecteezy.com/system/resources/previews/040/353/749/non_2x/online-form-icon-in-logotype-vector.jpg",
     link: "https://github.com/marvel987dc/Database_form-",
   },
 ];
 
 export default function ProjectGallery() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
-
-  const openModal = (project) => {
-    setSelectedProject(project);
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setSelectedProject(null);
-    setModalOpen(false);
-  };
-
-  useEffect(() => {
-    const handleEscapeKey = (e) => {
-      if (e.key === "Escape") {
-        closeModal();
-      }
-    };
-
-    window.addEventListener("keydown", handleEscapeKey);
-    return () => {
-      window.removeEventListener("keydown", handleEscapeKey);
-    };
-  }, []);
-
   return (
     <GalleryWrapper id="projects">
       <GalleryTitle>Projects</GalleryTitle>
       <ProjectsCards className="cards">
         {projects.map((project, index) => (
-          <ProjectCard
-            className="card"
-            key={index}
-            index={index}
-            onClick={() => openModal(project)}
-          >
+          <ProjectCard className="card" key={index} index={index}>
             <ProjectImage
+              className="cardImage"
               src={project.image}
               alt={project.title}
               effect="blur"
@@ -221,29 +182,13 @@ export default function ProjectGallery() {
             <ProjectContent>
               <ProjectTitle className="cardTitle">{project.title}</ProjectTitle>
               <ProjectDescription>{project.description}</ProjectDescription>
-              <ProjectButton className="cardButton" href={project.link}>GitHub</ProjectButton>
+              <ProjectButton className="cardButton" href={project.link}>
+                GitHub
+              </ProjectButton>
             </ProjectContent>
           </ProjectCard>
         ))}
       </ProjectsCards>
-      {selectedProject && (
-        <>
-          <ModalOverlay isOpen={modalOpen} onClick={closeModal} />
-          <Modal isOpen={modalOpen}>
-            <h2>{selectedProject.title}</h2>
-            <p>{selectedProject.description}</p>
-            <ProjectImage
-              src={selectedProject}
-              alt={selectedProject.title}
-              effect="blur"
-            />
-            <ProjectButton href={selectedProject.link} target="_blank" rel="">
-              GitHub
-            </ProjectButton>
-            <button onClick={closeModal}>Close</button>
-          </Modal>
-        </>
-      )}
     </GalleryWrapper>
   );
 }
