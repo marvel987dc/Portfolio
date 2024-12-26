@@ -20,7 +20,6 @@ const GalleryWrapper = styled.section`
   justify-content: center;
   align-items: center;
   margin-left: 80px;
-  background-color: #0f1624;
 `;
 
 const GalleryTitle = styled.h2`
@@ -42,7 +41,6 @@ const ProjectsCards = styled.div`
 
 const ProjectCard = styled.div`
   display: flex;
-  background: #0f1624;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -85,7 +83,6 @@ const ProjectTitle = styled.h3`
   justify-content: center;
   align-items: center;
   font-size: 1.4em;
-  // margin-left: 15px;
   text-align: center;
   color: #fff;
   margin-bottom: 20px;

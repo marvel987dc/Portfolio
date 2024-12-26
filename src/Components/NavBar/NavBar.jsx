@@ -3,7 +3,7 @@ import styled from "styled-components";
 import "./NavBar.css";
 
 const HeaderWrapper = styled.header`
- display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;

@@ -25,7 +25,6 @@ const technologies = [
   { name: "Figma", icon: "https://img.icons8.com/color/48/000000/figma.png" },
 ];
 
-
 const LanguagesWrapper = styled.section`
   padding: 60px 20px;
   background-color: #0f1624;
@@ -54,7 +53,6 @@ const TechGrid = styled.div`
 `;
 
 const TechItem = styled.div`
-background-color: #0f1624;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 8px rgb(255, 255, 255);

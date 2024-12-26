@@ -14,7 +14,6 @@ const IntroSection = styled.section`
 
 const IntroMessage = styled.h1`
 align-self: center;
-  margin-right: 50px;
   font-size: 2rem;
   color: ${(props) => props.color};
 `;
