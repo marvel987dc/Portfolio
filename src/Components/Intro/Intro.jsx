@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import "./Intro.css";
+import Pic from "../../assets/Pics/animalCrossingChara.png";
 
 const IntroSection = styled.section`
   display: flex;
@@ -91,7 +92,7 @@ const Intro = () => {
     <IntroSection id="intro">
       <IntroMessage color={color}>{message}</IntroMessage>
       <CharaPic
-        src="./src/assets/Pics/animalCrossingChara.png"
+        src={Pic}
         className="CharaImg"
       />
 

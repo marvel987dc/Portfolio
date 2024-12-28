@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import "./NavBar.css";
+import github from "../../assets/Pics/github.png";
+import linkedin from "../../assets/Pics/Linkedin.png";
+
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -77,13 +80,13 @@ export default function Header() {
           Languages
         </NavLink>
         <NavLink2 className="nav2" href="https://github.com/marvel987dc">
-          <Image src="./src/assets/Pics/github.png" alt="git" />
+          <Image src={github} alt="git" />
         </NavLink2>
         <NavLink2
           className="nav2"
           href="https://linkedin.com/in/juan-barrero-66b407290"
         >
-          <Image src="./src/assets/Pics/Linkedin.png" alt="linkedin" />
+          <Image src={linkedin} alt="linkedin" />
         </NavLink2>
       </Nav>
     </HeaderWrapper>
