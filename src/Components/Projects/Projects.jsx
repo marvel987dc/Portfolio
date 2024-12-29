@@ -19,7 +19,7 @@ const GalleryWrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 80px;
+  // margin-left: 80px;
 `;
 
 const GalleryTitle = styled.h2`

@@ -32,7 +32,7 @@ const LanguagesWrapper = styled.section`
 `;
 
 const Title = styled.h2`
-  margin-left: 50px;
+  // margin-left: 50px;
   font-size: 2.5em;
   color: #ffffff;
   margin-bottom: 40px;
@@ -44,7 +44,7 @@ const TechGrid = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   max-width: 1200px;
-  margin-left: 50px;
+  // margin-left: 50px;
 
   @media (max-width: 768px) {
     flex-direction: column;

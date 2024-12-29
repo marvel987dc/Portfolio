@@ -4,7 +4,6 @@ import "./NavBar.css";
 import github from "../../assets/Pics/github.png";
 import linkedin from "../../assets/Pics/Linkedin.png";
 
-
 const HeaderWrapper = styled.header`
   display: flex;
   flex-direction: column;
@@ -31,7 +30,7 @@ const Nav = styled.nav`
 `;
 
 const Image = styled.img`
-  margin-left: 30px;
+  // margin-left: 30px;
 `;
 
 const NavLink = styled.a`
@@ -66,29 +65,33 @@ export default function Header() {
       <Subtitle>
         AI Software Engineering - Student - Centennial College
       </Subtitle>
-      <Nav className="nav">
-        <NavLink className="nav1" href="#projects">
-          Projects
-        </NavLink>
-        <NavLink className="nav1" href="#about">
-          About
-        </NavLink>
-        <NavLink className="nav1" href="#contact">
-          Contact
-        </NavLink>
-        <NavLink className="nav1" href="#technologies">
-          Languages
-        </NavLink>
-        <NavLink2 className="nav2" href="https://github.com/marvel987dc">
-          <Image src={github} alt="git" />
-        </NavLink2>
-        <NavLink2
-          className="nav2"
-          href="https://linkedin.com/in/juan-barrero-66b407290"
-        >
-          <Image src={linkedin} alt="linkedin" />
-        </NavLink2>
-      </Nav>
+      <div className="navbar-desktop">
+        <Nav className="nav">
+          <NavLink className="nav1" href="#projects">
+            Projects
+          </NavLink>
+          <NavLink className="nav1" href="#about">
+            About
+          </NavLink>
+          <NavLink className="nav1" href="#contact">
+            Contact
+          </NavLink>
+          <NavLink className="nav1" href="#technologies">
+            Languages
+          </NavLink>
+        </Nav>
+        <div className="icons-mobile">
+          <NavLink2 className="nav2" href="https://github.com/marvel987dc">
+            <Image src={github} alt="git" />
+          </NavLink2>
+          <NavLink2
+            className="nav2"
+            href="https://linkedin.com/in/juan-barrero-66b407290"
+          >
+            <Image src={linkedin} alt="linkedin" />
+          </NavLink2>
+        </div>
+      </div>
     </HeaderWrapper>
   );
 }

@@ -1,18 +1,18 @@
 import styled from "styled-components";
-import "./About.css"
+import "./About.css";
 
 const IntroSection = styled.section`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  align-items: center;  
+  align-items: center;
   margin-top: 50px;
   background-color: #0f1624;
   gap: 30px;
 `;
 
 const Title = styled.h2`
-  margin-left: 50px;
+  // margin-left: 50px;
   font-size: 2.5em;
   color: #fff;
   margin-bottom: 20px;
@@ -23,7 +23,7 @@ const Description = styled.p`
   max-width: 600px;
   margin-top: -10px;
   color: white;
-  margin-left: 50px;
+  // margin-left: 50px;
 `;
 
 // const Separator = styled.img`

@@ -1,12 +1,12 @@
 .resumeButton{
-    margin-right: 20px;
+    /* margin-right: 100px; */
 }
 
 .CharaImg{
     display: flex;
     justify-content: center; 
     align-items: center;
-    margin-left: 25px;
+    /* margin-left: 25px; */
     width: 100%;
     height: 100%;
     object-fit: cover;

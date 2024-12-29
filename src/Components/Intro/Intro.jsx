@@ -7,14 +7,14 @@ const IntroSection = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 25px;
+  // margin-left: 25px;
   align-items: center;
   background-color: #0f1624;
   gap: 30px;
 `;
 
 const IntroMessage = styled.h1`
-align-self: center;
+  align-self: center;
   font-size: 2rem;
   color: ${(props) => props.color};
 `;
@@ -33,10 +33,10 @@ const Description = styled.p`
 
 const Button = styled.a`
   background: linear-gradient(270deg, #13adc7 0%, #6978d1 66.67%, #945dd6 100%);
-  width: 10%;
+  width: 6rem;
   border-radius: 25px;
   height: 50px;
-  margin-left: 25px;
+  // margin-left: 25px;
   color: white;
   font-size: 15px;
   margin-top: 10px;
@@ -50,12 +50,11 @@ const Button = styled.a`
 `;
 
 const CharaPic = styled.img`
- align-self: center;
-  margin-right: 50px;
+  align-self: center;
+  // margin-right: 50px;
   width: 200px;
   height: 200px;
-  border-radius: 50%;\
-  
+  border-radius: 50%;
 `;
 
 const Intro = () => {
@@ -91,10 +90,7 @@ const Intro = () => {
   return (
     <IntroSection id="intro">
       <IntroMessage color={color}>{message}</IntroMessage>
-      <CharaPic
-        src={Pic}
-        className="CharaImg"
-      />
+      <CharaPic src={Pic} className="CharaImg" />
 
       <Title className="welcome">{typedText}</Title>
       <Description>

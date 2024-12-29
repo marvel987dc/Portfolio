@@ -6,7 +6,7 @@ export default function Contact() {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 50px;
+    // margin-left: 50px;
     padding: 2rem 0;
     text-align: center;
     background-color: #0f1624;
@@ -28,7 +28,7 @@ export default function Contact() {
   const ContactButton = styled.a`
     display: inline-block;
     padding: 0.5rem 1rem;
-    background-color:rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
     color: #000000;
     text-decoration: none;
     border-radius: 4px;
@@ -44,10 +44,15 @@ export default function Contact() {
           Do you want to discuss or know something about me? Feel welcome to
           send me a message!!{" "}
         </ContactDescription>
-        <ContactButton className="ContactB" href="mailto:juanbarrero2005@hotmail.com">
-        Hotmail
+        <ContactButton
+          className="ContactB"
+          href="mailto:juanbarrero2005@hotmail.com"
+        >
+          Hotmail
         </ContactButton>
-        <ContactButton className="ContactB2" href=" https://wa.me/14379923653">Whatsapp</ContactButton>
+        <ContactButton className="ContactB2" href=" https://wa.me/14379923653">
+          Whatsapp
+        </ContactButton>
       </ContactSection>
     </div>
   );
