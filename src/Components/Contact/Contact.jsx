@@ -46,7 +46,7 @@ export default function Contact() {
         </ContactDescription>
         <ContactButton
           className="ContactB"
-          href="mailto:juanbarrero2005@hotmail.com"
+          href="mailto:barrerojuan810@gmail.com"
         >
           Hotmail
         </ContactButton>
