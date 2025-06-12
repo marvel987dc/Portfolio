@@ -169,6 +169,15 @@ const projects = [
       "https://static.vecteezy.com/system/resources/previews/023/911/518/non_2x/inspection-icon-check-illustration-symbol-examination-sign-test-logo-vector.jpg",
     link: "https://github.com/marvel987dc/trivia_test-",
   },
+  {
+    title: "AuthenticAuth",
+    description:
+      "Check the validations of your certificates by using blockchain (Powered by AI).",
+    languages: "GO, JavaScript(React), Tailwind, CSS, HTML",
+    image:
+      "https://icons.veryicon.com/png/o/business/blue-linear-icon/authentication-47.png",
+    link: "https://github.com/marvel987dc/AuthenticAuth",
+  },
 ];
 
 export default function ProjectGallery() {
