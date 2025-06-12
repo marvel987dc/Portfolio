@@ -1,7 +1,7 @@
 .cardTitle {
     position: relative;
     width: fit-content;
-    width: -moz-fit-content; 
+    margin: 0 auto;
   }
   
 .cardTitle::before {
@@ -11,10 +11,10 @@
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: rgb(244, 244, 244);
+    background: linear-gradient(90deg, #13adc7, #6978d1);
     visibility: hidden;
     transform: scaleX(0);
-    transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out;
   }
 
 .cardTitle:hover::before {
@@ -35,12 +35,8 @@
     transition: all 0.3s ease-in-out 0s;
   }
 
-  .cardImage {
-    object-fit: cover;
-    border-radius: 10px;
-    object-fit: cover;
-    border-color: aliceblue;
-  }
+
+
   
   
 
