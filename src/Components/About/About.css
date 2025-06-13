@@ -1,0 +1,82 @@
+/* Add smooth scrolling to the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add a subtle background pattern */
+#about {
+  background-image: 
+    radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.05) 2%, transparent 0%),
+    radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.05) 2%, transparent 0%);
+  background-size: 100px 100px;
+}
+
+/* Add a subtle glow effect to the stats */
+.StatItem {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.StatItem:hover {
+  box-shadow: 0 8px 15px rgba(19, 173, 199, 0.2);
+}
+
+/* Add a subtle animation to the interest items */
+.InterestItem {
+  position: relative;
+  overflow: hidden;
+}
+
+.InterestItem::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #13adc7, #6978d1, #945dd6);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.InterestItem:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Add responsive design */
+@media (max-width: 768px) {
+  .StatsContainer {
+    gap: 20px;
+  }
+
+  .StatItem {
+    min-width: 120px;
+  }
+
+  .InterestsContainer {
+    gap: 10px;
+  }
+
+  .InterestItem {
+    font-size: 0.9em;
+    padding: 8px 16px;
+  }
+}
+
+.interests{
+    font-size: 2em;
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: "Doto", serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    font-variation-settings:
+      "ROND" 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    margin: 0px;
+}

@@ -60,6 +60,7 @@ const CharaPic = styled.img`
 const Intro = () => {
   const [typedText, setTypedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [hasFlipped, setHasFlipped] = useState(false);
   const date = new Date();
   const hour = date.getHours();
 
@@ -87,11 +88,20 @@ const Intro = () => {
     return () => clearInterval(intervalId);
   }, [currentIndex]);
 
+  const handleImageHover = () => {
+    if (!hasFlipped) {
+      setHasFlipped(true);
+    }
+  };
+
   return (
     <IntroSection id="intro">
       <IntroMessage color={color}>{message}</IntroMessage>
-      <CharaPic src={Pic} className="CharaImg" />
-
+      <CharaPic
+        src={Pic}
+        className={`CharaImg ${hasFlipped ? "flip" : ""}`}
+        onMouseEnter={handleImageHover}
+      />
       <Title className="welcome">{typedText}</Title>
       <Description>
         Aspiring AI-Software Engineering student with strong skills in C#,
