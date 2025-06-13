@@ -5,93 +5,129 @@ import github from "../../assets/Pics/github.png";
 import linkedin from "../../assets/Pics/Linkedin.png";
 
 const HeaderWrapper = styled.header`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
   width: 100%;
-  background-color: #0f1624;
+  background-color: rgba(15, 22, 36, 0.95);
+  backdrop-filter: blur(10px);
   color: white;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+`;
+
+const NavContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Title = styled.h1`
-  font-size: 2.5em;
+  font-size: 1.8rem;
   margin: 0;
   color: white;
-`;
-
-const Subtitle = styled.p`
-  font-size: 1.2em;
+  font-family: "Doto", serif;
+  background: linear-gradient(270deg, #13adc7 0%, #6978d1 66.67%, #945dd6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 const Nav = styled.nav`
   display: flex;
-  margin-top: 20px;
-`;
-
-const Image = styled.img`
-  // margin-left: 30px;
+  gap: 2rem;
+  align-items: center;
 `;
 
 const NavLink = styled.a`
-  margin: 0 15px;
   text-decoration: none;
   color: white;
-  font-size: 1em;
-  background-color: #0f1624;
-  transition: color 0.3s;
+  font-size: 1rem;
+  position: relative;
+  padding: 0.5rem 0;
+  transition: all 0.3s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #13adc7, #6978d1, #945dd6);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
 
   &:hover {
-    color: #ffffff;
+    color: #13adc7;
+    &::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
   }
 `;
 
-const NavLink2 = styled.a`
+const SocialLinks = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+`;
+
+const SocialLink = styled.a`
   text-decoration: none;
   color: white;
-  font-size: 1em;
-  background-color: #0f1624;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  img {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+  }
 
   &:hover {
-    color: #ffffff;
+    color: #13adc7;
+    img {
+      transform: scale(1.2);
+    }
   }
 `;
 
 export default function Header() {
   return (
-    <HeaderWrapper id="Nav">
-      <Title className="name">Juan Barrero</Title>
-      <Subtitle>
-        AI Software Engineering - Student - Centennial College
-      </Subtitle>
-      <div className="navbar-desktop">
-        <Nav className="nav">
-          <NavLink className="nav1" href="#projects">
-            Projects
-          </NavLink>
-          <NavLink className="nav1" href="#about">
-            About
-          </NavLink>
-          <NavLink className="nav1" href="#contact">
-            Contact
-          </NavLink>
-          <NavLink className="nav1" href="#technologies">
-            Languages
-          </NavLink>
+    <HeaderWrapper>
+      <NavContainer>
+        <Title>Juan Barrero</Title>
+        <Nav>
+          <NavLink href="#projects">Projects</NavLink>
+          <NavLink href="#about">About</NavLink>
+          <NavLink href="#contact">Contact</NavLink>
+          <NavLink href="#technologies">Languages</NavLink>
+          <SocialLinks>
+            <SocialLink
+              href="https://github.com/marvel987dc"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={github} alt="GitHub" />
+            </SocialLink>
+            <SocialLink
+              href="https://linkedin.com/in/juan-barrero-66b407290"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={linkedin} alt="LinkedIn" />
+            </SocialLink>
+          </SocialLinks>
         </Nav>
-        <div className="icons-mobile">
-          <NavLink2 className="nav2" href="https://github.com/marvel987dc">
-            <Image src={github} alt="git" />
-          </NavLink2>
-          <NavLink2
-            className="nav2"
-            href="https://linkedin.com/in/juan-barrero-66b407290"
-          >
-            <Image src={linkedin} alt="linkedin" />
-          </NavLink2>
-        </div>
-      </div>
+      </NavContainer>
     </HeaderWrapper>
   );
 }

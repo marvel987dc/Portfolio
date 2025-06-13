@@ -84,4 +84,101 @@
     gap: 20px;
   } 
 
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Add a subtle background pattern */
+#Nav {
+  background-image: 
+    radial-gradient(circle at 25px 25px, rgba(255, 255, 255, 0.05) 2%, transparent 0%),
+    radial-gradient(circle at 75px 75px, rgba(255, 255, 255, 0.05) 2%, transparent 0%);
+  background-size: 100px 100px;
+}
+
+/* Mobile menu button animation */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.MobileMenuButton:hover {
+  animation: spin 0.5s ease-in-out;
+}
+
+/* Add hover effect for social icons */
+.social-link img {
+  transition: transform 0.3s ease;
+}
+
+.social-link:hover img {
+  transform: scale(1.2);
+}
+
+/* Add responsive design */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+
+  .SocialLinks {
+    margin-top: 20px;
+  }
+}
+
+/* Add animation for active section */
+.NavLink.active {
+  position: relative;
+}
+
+.NavLink.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #13adc7, #6978d1, #945dd6);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Add padding to body to account for fixed navbar */
+body {
+  padding-top: 80px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  
+  .navbar-desktop {
+    display: none;
+  }
+  
+  .icons-mobile {
+    display: none;
+  }
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
 
