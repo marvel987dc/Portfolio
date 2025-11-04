@@ -102,32 +102,36 @@ const SocialLink = styled.a`
 
 export default function Header() {
   return (
-    <HeaderWrapper>
-      <NavContainer>
-        <Title>Juan Barrero</Title>
-        <Nav>
-          <NavLink href="#projects">Projects</NavLink>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
-          <NavLink href="#technologies">Languages</NavLink>
-          <SocialLinks>
-            <SocialLink
-              href="https://github.com/marvel987dc"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={github} alt="GitHub" />
-            </SocialLink>
-            <SocialLink
-              href="https://linkedin.com/in/juan-barrero-66b407290"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img src={linkedin} alt="LinkedIn" />
-            </SocialLink>
-          </SocialLinks>
-        </Nav>
-      </NavContainer>
-    </HeaderWrapper>
+    <>
+      <div className="arcade-bg" />
+      <div className="scanline" />
+      <HeaderWrapper>
+        <NavContainer>
+          <Title>Juan Barrero</Title>
+          <Nav>
+            <NavLink href="#projects">Projects</NavLink>
+            <NavLink href="#about">About</NavLink>
+            <NavLink href="#contact">Contact</NavLink>
+            <NavLink href="#technologies">Languages</NavLink>
+            <SocialLinks>
+              <SocialLink
+                href="https://github.com/marvel987dc"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={github} alt="GitHub" />
+              </SocialLink>
+              <SocialLink
+                href="https://linkedin.com/in/juan-barrero-66b407290"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <img src={linkedin} alt="LinkedIn" />
+              </SocialLink>
+            </SocialLinks>
+          </Nav>
+        </NavContainer>
+      </HeaderWrapper>
+    </>
   );
 }

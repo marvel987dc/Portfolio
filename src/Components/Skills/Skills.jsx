@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { keyframes } from "styled-components";
 
@@ -10,7 +11,7 @@ const countUp = keyframes`
   }
 `;
 
-const technologies = [
+const languages = [
   {
     name: "HTML",
     icon: "https://img.icons8.com/color/48/000000/html-5.png",
@@ -47,14 +48,120 @@ const technologies = [
     level: 8,
   },
   {
-    name: "git",
-    icon: "https://img.icons8.com/color/48/000000/git.png",
-    level: 9,
+    name: "Kotlin",
+    icon: "https://img.icons8.com/color/48/000000/kotlin.png",
+    level: 7,
   },
+];
+
+const libraries = [
+  {
+    name: "Node.js",
+    icon: "https://img.icons8.com/color/48/000000/nodejs.png",
+    level: 8,
+  },
+  {
+    name: "Express",
+    icon: "https://img.icons8.com/color/48/000000/express.png",
+    level: 8,
+  },
+  {
+    name: "MongoDB",
+    icon: "https://img.icons8.com/color/48/000000/mongodb.png",
+    level: 7,
+  },
+  {
+    name: "Bootstrap",
+    icon: "https://img.icons8.com/color/48/000000/bootstrap.png",
+    level: 8,
+  },
+  {
+    name: "Tailwind CSS",
+    icon: "https://img.icons8.com/color/48/000000/tailwindcss.png",
+    level: 8,
+  },
+  {
+    name: "Flask",
+    icon: "https://img.icons8.com/color/48/000000/flask.png",
+    level: 8,
+  },
+  {
+    name: "Pandas",
+    icon: "https://img.icons8.com/color/48/000000/pandas.png",
+    level: 8,
+  },
+  {
+    name: "NumPy",
+    icon: "https://img.icons8.com/color/48/000000/numpy.png",
+    level: 8,
+  },
+  {
+    name: "Scikit-learn",
+    icon: "https://raw.githubusercontent.com/scikit-learn/scikit-learn/main/doc/logos/scikit-learn-logo.png",
+    level: 8,
+  },
+  {
+    name: "TensorFlow",
+    icon: "https://img.icons8.com/color/48/000000/tensorflow.png",
+    level: 8,
+  },
+  {
+    name: "Matplotlib",
+    icon: "https://img.icons8.com/color/48/000000/matplotlib.png",
+    level: 8,
+  },
+];
+
+const OtherSkills = [
   {
     name: "Figma",
     icon: "https://img.icons8.com/color/48/000000/figma.png",
     level: 10,
+  },
+  {
+    name: "Canva",
+    icon: "https://img.icons8.com/color/48/000000/canva.png",
+    level: 10,
+  },
+  {
+    name: "Orange",
+    icon: "https://img.icons8.com/color/48/000000/orange.png",
+    level: 8,
+  },
+  {
+    name: "Excel",
+    icon: "https://img.icons8.com/color/48/000000/microsoft-excel-2019.png",
+    level: 9,
+  },
+  {
+    name: "Azure",
+    icon: "https://img.icons8.com/color/48/000000/azure-1.png",
+    level: 8,
+  },
+  {
+    name: "AWS",
+    icon: "https://img.icons8.com/color/48/000000/amazon-web-services.png",
+    level: 8,
+  },
+  {
+    name: "Linux",
+    icon: "https://img.icons8.com/color/48/000000/linux.png",
+    level: 7,
+  },
+  {
+    name: "Notion",
+    icon: "https://img.icons8.com/color/48/000000/notion.png",
+    level: 9,
+  },
+  {
+    name: "Postman",
+    icon: "https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-postman-is-the-only-complete-api-development-environment-logo-color-tal-revivo.png",
+    level: 9,
+  },
+  {
+    name: "git",
+    icon: "https://img.icons8.com/color/48/000000/git.png",
+    level: 9,
   },
 ];
 
@@ -64,11 +171,114 @@ const LanguagesWrapper = styled.section`
   text-align: center;
 `;
 
+const TabNav = styled.nav`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+`;
+
+const TabButton = styled.button`
+  background: ${(props) =>
+    props.active
+      ? "linear-gradient(90deg, #13adc7, #6978d1, #945dd6)"
+      : "transparent"};
+  border: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 12px 30px;
+  font-size: 1.1em;
+  font-weight: ${(props) => (props.active ? "600" : "400")};
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  min-width: 120px;
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &:hover {
+    background: ${(props) =>
+      props.active
+        ? "linear-gradient(90deg, #13adc7, #6978d1, #945dd6)"
+        : "rgba(69, 212, 255, 0.3)"};
+    color: #ffffff;
+    transform: scale(1.02);
+    z-index: 1;
+    box-shadow: 0 0 20px rgba(69, 212, 255, 0.4);
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #13adc7, #6978d1, #945dd6);
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  ${(props) =>
+    props.active &&
+    `
+    &::after {
+      width: 100%;
+    }
+  `}
+`;
+
+const ContentContainer = styled.div`
+  min-height: 400px;
+  animation: fadeIn 0.4s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
 const Title = styled.h2`
-  // margin-left: 50px;
   font-size: 2.5em;
   color: #ffffff;
   margin-bottom: 40px;
+  text-transform: capitalize;
 `;
 
 const TechGrid = styled.div`
@@ -102,7 +312,9 @@ const TechItem = styled.div`
 `;
 
 const TechIcon = styled.img`
-  height: auto;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
   margin-bottom: 10px;
 `;
 
@@ -166,22 +378,63 @@ const SkillPercentage = styled.span`
 `;
 
 export default function Skills() {
+  const [activeTab, setActiveTab] = useState("languages");
+
+  const getCurrentSkills = () => {
+    switch (activeTab) {
+      case "languages":
+        return languages;
+      case "libraries":
+        return libraries;
+      case "other":
+        return OtherSkills;
+      default:
+        return languages;
+    }
+  };
+
+  const currentSkills = getCurrentSkills();
+  const showSkillBar = activeTab !== "other";
+
   return (
     <LanguagesWrapper id="technologies">
-      <Title>languages</Title>
-      <TechGrid>
-        {technologies.map((tech, index) => (
-          <TechItem key={index} index={index}>
-            <TechIcon src={tech.icon} alt={tech.name} />
-            <TechName>{tech.name}</TechName>
-            <SkillBar>
-              <SkillLevel level={tech.level} />
-              <SkillPercentage>{tech.level * 10}%</SkillPercentage>
-            </SkillBar>
-            <SkillText>{tech.level}/10</SkillText>
-          </TechItem>
-        ))}
-      </TechGrid>
+      <TabNav>
+        <TabButton
+          active={activeTab === "languages"}
+          onMouseEnter={() => setActiveTab("languages")}
+        >
+          Languages
+        </TabButton>
+        <TabButton
+          active={activeTab === "libraries"}
+          onMouseEnter={() => setActiveTab("libraries")}
+        >
+          Libraries
+        </TabButton>
+        <TabButton
+          active={activeTab === "other"}
+          onMouseEnter={() => setActiveTab("other")}
+        >
+          Other Skills
+        </TabButton>
+      </TabNav>
+      <ContentContainer>
+        <Title>{activeTab}</Title>
+        <TechGrid>
+          {currentSkills.map((tech, index) => (
+            <TechItem key={index} index={index}>
+              <TechIcon src={tech.icon} alt={tech.name} />
+              <TechName>{tech.name}</TechName>
+              {showSkillBar && (
+                <SkillBar>
+                  <SkillLevel level={tech.level} />
+                  <SkillPercentage>{tech.level * 10}%</SkillPercentage>
+                </SkillBar>
+              )}
+            </TechItem>
+          ))}
+        </TechGrid>
+      </ContentContainer>
     </LanguagesWrapper>
   );
 }
