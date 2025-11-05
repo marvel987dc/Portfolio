@@ -16,6 +16,7 @@ const IntroSection = styled.section`
 const IntroMessage = styled.h1`
   align-self: center;
   font-size: 2rem;
+  font-family: "Doto", serif;
   color: ${(props) => props.color};
 `;
 
