@@ -113,8 +113,8 @@ const Intro = () => {
       </Description>
       <Button
         className="resumeButton"
-        href="./Data/Juan_Barrero_ResumeCopy.pdf"
-        download="Juan_Barrero_ResumeCopy.pdf"
+        href="./Data/Juan_Barrero_Resume - Copy.pdf"
+        download="Juan_Barrero_Resume - Copy.pdf"
       >
         Resume
       </Button>
