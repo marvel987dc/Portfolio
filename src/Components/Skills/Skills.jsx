@@ -1,15 +1,5 @@
 import { useState } from "react";
-import styled from "styled-components";
-import { keyframes } from "styled-components";
-
-const countUp = keyframes`
-  from {
-    width: 0;
-  }
-  to {
-    width: var(--target-width);
-  }
-`;
+import styled, { keyframes } from "styled-components";
 
 const languages = [
   {
@@ -167,7 +157,7 @@ const OtherSkills = [
 
 const LanguagesWrapper = styled.section`
   padding: 60px 20px;
-  background-color: #0f1624;
+  background-color: var(--bg-primary);
   text-align: center;
 `;
 
@@ -184,7 +174,7 @@ const TabNav = styled.nav`
 const TabButton = styled.button`
   background: ${(props) =>
     props.active
-      ? "linear-gradient(90deg, #13adc7, #6978d1, #945dd6)"
+      ? "var(--gradient-main)"
       : "transparent"};
   border: none;
   border-right: 1px solid rgba(255, 255, 255, 0.3);
@@ -206,7 +196,7 @@ const TabButton = styled.button`
   &:hover {
     background: ${(props) =>
       props.active
-        ? "linear-gradient(90deg, #13adc7, #6978d1, #945dd6)"
+        ? "var(--gradient-main)"
         : "rgba(69, 212, 255, 0.3)"};
     color: #ffffff;
     transform: scale(1.02);
@@ -241,7 +231,7 @@ const TabButton = styled.button`
     left: 0;
     width: 0;
     height: 3px;
-    background: linear-gradient(90deg, #13adc7, #6978d1, #945dd6);
+    background: var(--gradient-main);
     transition: width 0.3s ease;
   }
 
@@ -276,7 +266,7 @@ const ContentContainer = styled.div`
 
 const Title = styled.h2`
   font-size: 2.5em;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 40px;
   text-transform: capitalize;
 `;
@@ -287,7 +277,7 @@ const TechGrid = styled.div`
   flex-wrap: wrap;
   gap: 20px;
   max-width: 1200px;
-  // margin-left: 50px;
+  margin: 0 auto;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -298,12 +288,13 @@ const TechGrid = styled.div`
 const TechItem = styled.div`
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 2px 8px rgb(255, 255, 255);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
   width: 180px;
   text-align: center;
   position: relative;
   overflow: visible;
+  background: rgba(255, 255, 255, 0.03);
 
   &:hover {
     transform: translateY(-10px) scale(1.05);
@@ -320,7 +311,7 @@ const TechIcon = styled.img`
 
 const TechName = styled.p`
   font-size: 1em;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 15px;
 `;
 
@@ -337,27 +328,12 @@ const SkillBar = styled.div`
 const SkillLevel = styled.div`
   height: 100%;
   width: 0;
-  background: linear-gradient(90deg, #13adc7, #6978d1, #945dd6);
+  background: var(--gradient-main);
   border-radius: 4px;
   transition: width 1s ease-in-out;
 
   ${TechItem}:hover & {
     width: ${(props) => props.level * 10}%;
-  }
-`;
-
-const SkillText = styled.span`
-  position: absolute;
-  right: 0;
-  top: -20px;
-  color: #ffffff;
-  font-size: 0.9em;
-  font-weight: 500;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-
-  ${TechItem}:hover & {
-    opacity: 1;
   }
 `;
 
@@ -422,7 +398,7 @@ export default function Skills() {
         <Title>{activeTab}</Title>
         <TechGrid>
           {currentSkills.map((tech, index) => (
-            <TechItem key={index} index={index}>
+            <TechItem key={index}>
               <TechIcon src={tech.icon} alt={tech.name} />
               <TechName>{tech.name}</TechName>
               {showSkillBar && (

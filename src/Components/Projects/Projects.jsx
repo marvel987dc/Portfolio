@@ -1,7 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import "./Projects.css";
 
 const fadeIn = keyframes`
   from {
@@ -20,13 +19,13 @@ const GalleryWrapper = styled.section`
   justify-content: center;
   align-items: center;
   padding: 80px 20px;
-  background-color: #0f1624;
+  background-color: var(--bg-primary);
 `;
 
 const GalleryTitle = styled.h2`
   font-size: 2.5em;
   margin-bottom: 50px;
-  color: white;
+  color: var(--text-primary);
   position: relative;
 
   &::after {
@@ -37,7 +36,7 @@ const GalleryTitle = styled.h2`
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, #13adc7, #6978d1, #945dd6);
+    background: var(--gradient-main);
     border-radius: 2px;
   }
 `;
@@ -97,7 +96,7 @@ const ProjectContent = styled.div`
 
 const ProjectTitle = styled.h3`
   font-size: 1.4em;
-  color: #fff;
+  color: var(--text-primary);
   margin: 0;
   text-align: center;
   position: relative;
@@ -118,7 +117,8 @@ const ProjectTitle = styled.h3`
 
 const ProjectDescription = styled.p`
   font-size: 1em;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--text-primary);
+  opacity: 0.8;
   margin: 0;
   text-align: center;
   line-height: 1.5;
@@ -126,7 +126,7 @@ const ProjectDescription = styled.p`
 
 const ProjectLanguages = styled.p`
   font-size: 0.9em;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-secondary);
   margin: 0;
   text-align: center;
   font-style: italic;
@@ -137,7 +137,7 @@ const ProjectButton = styled.a`
   padding: 12px 24px;
   font-size: 1em;
   color: #fff;
-  background: linear-gradient(270deg, #13adc7 0%, #6978d1 66.67%, #945dd6 100%);
+  background: var(--gradient-main);
   border-radius: 25px;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -147,7 +147,7 @@ const ProjectButton = styled.a`
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(69, 212, 255, 0.3);
-    background: linear-gradient(270deg, #13adc7 0%, #6978d1 80%, #945dd6 100%);
+    filter: brightness(1.1);
   }
 `;
 
