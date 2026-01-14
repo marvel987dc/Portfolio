@@ -5,6 +5,7 @@ import Contact from "./Components/Contact/Contact";
 import Skills from "./Components/Skills/Skills";
 import ProjectGallery from "./Components/Projects/Projects";
 import CustomCursor from "./Components/CustomCursor/CustomCursor";
+import Footer from "./Components/Footer/Footer";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <About />
         <Contact />
       </main>
+      <Footer />
     </>
   );
 }
