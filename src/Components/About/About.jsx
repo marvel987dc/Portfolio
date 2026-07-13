@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import "./About.css";
+import diplomaImage from "../../assets/Diploma/Diploma .jpeg";
 
 const fadeIn = keyframes`
   from {
@@ -97,6 +98,10 @@ const StatItem = styled.div`
   }
 `;
 
+const ClickableStatItem = styled(StatItem)`
+  cursor: pointer;
+`;
+
 const StatNumber = styled.div`
   font-size: 2em;
   color: #13adc7;
@@ -107,6 +112,39 @@ const StatNumber = styled.div`
 const StatLabel = styled.div`
   color: white;
   font-size: 1em;
+`;
+
+const DiplomaImage = styled.img`
+  width: 100%;
+  max-width: 210px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+`;
+
+const DiplomaModal = styled.button`
+  position: fixed;
+  inset: 0;
+  border: 0;
+  padding: 24px;
+  background: rgba(5, 10, 18, 0.88);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: zoom-out;
+`;
+
+const DiplomaModalImage = styled.img`
+  width: min(92vw, 900px);
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
 `;
 
 const InterestsContainer = styled.div`
@@ -135,22 +173,31 @@ const InterestItem = styled.div`
 `;
 
 const Intro = () => {
+  const [isDiplomaOpen, setIsDiplomaOpen] = useState(false);
+
   return (
     <IntroSection id="about">
       <Title>About Me</Title>
       <Description>
-        Hi, I'm Juan. I came to Canada from Colombia to pursue my dream of
-        becoming a software engineer and to showcase my skills in design,
-        critical thinking, and problem-solving. I am currently in my third
-        semester at Centennial College. Beyond coding, I enjoy playing the
-        guitar, drawing in my free time, and watching movies.
+        Hi, I’m Juan. I came to Canada from Colombia to pursue my dream of
+        becoming a software engineer and to develop my skills in software
+        development, design, critical thinking, and problem-solving. I recently
+        graduated from the AI – Software Engineering Technology program at
+        Centennial College and am currently looking for new opportunities where
+        I can contribute, continue learning, and grow as a developer. Beyond
+        coding, I enjoy playing the guitar, drawing in my free time, and
+        watching movies.
       </Description>
 
       <StatsContainer>
-        <StatItem>
-          <StatNumber>4</StatNumber>
-          <StatLabel>Semesters Completed</StatLabel>
-        </StatItem>
+        <ClickableStatItem
+          type="button"
+          onClick={() => setIsDiplomaOpen(true)}
+          aria-label="Open diploma image in a larger view"
+        >
+          <StatNumber>Diploma</StatNumber>
+          <DiplomaImage src={diplomaImage} alt="Diploma certificate" />
+        </ClickableStatItem>
         <StatItem>
           <StatNumber>6+</StatNumber>
           <StatLabel>Projects Completed</StatLabel>
@@ -167,6 +214,18 @@ const Intro = () => {
         <InterestItem>🎬 Movies</InterestItem>
         <InterestItem>💻 Coding</InterestItem>
       </InterestsContainer>
+      {isDiplomaOpen && (
+        <DiplomaModal
+          type="button"
+          onClick={() => setIsDiplomaOpen(false)}
+          aria-label="Close diploma image"
+        >
+          <DiplomaModalImage
+            src={diplomaImage}
+            alt="Diploma certificate enlarged"
+          />
+        </DiplomaModal>
+      )}
     </IntroSection>
   );
 };
