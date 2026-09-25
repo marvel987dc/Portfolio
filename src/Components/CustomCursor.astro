@@ -1,0 +1,22 @@
+<div class="cursor-dot" aria-hidden="true"></div>
+<script>
+  const dot = document.querySelector(".cursor-dot");
+  if (dot && window.matchMedia("(pointer: fine) and (prefers-reduced-motion: no-preference)").matches) {
+    let frame = 0;
+    let x = -20;
+    let y = -20;
+    window.addEventListener("pointermove", (event) => {
+      x = event.clientX;
+      y = event.clientY;
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        dot.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        frame = 0;
+      });
+    }, { passive: true });
+  }
+</script>
+<style>
+  .cursor-dot { position: fixed; z-index: 30; top: 0; left: 0; width: 8px; height: 8px; border-radius: 50%; background: #fff; pointer-events: none; opacity: .58; mix-blend-mode: difference; transform: translate3d(-20px,-20px,0); }
+  @media (pointer: coarse), (prefers-reduced-motion: reduce) { .cursor-dot { display: none; } }
+</style>

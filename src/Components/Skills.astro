@@ -1,0 +1,61 @@
+---
+const panels = [
+  { id: "languages", label: "Languages", skills: [["HTML", 10], ["CSS", 8], ["JavaScript", 8], ["React", 9], ["Python", 8], ["C#", 7], ["Java", 8], ["Kotlin", 7]] },
+  { id: "libraries", label: "Libraries", skills: [["Node.js", 8], ["Express", 8], ["MongoDB", 7], ["Bootstrap", 8], ["Tailwind CSS", 8], ["Flask", 8], ["Pandas", 8], ["NumPy", 8], ["Scikit-learn", 8], ["TensorFlow", 8], ["Matplotlib", 8]] },
+  { id: "other", label: "Other Skills", skills: [["Figma", 10], ["Canva", 10], ["Orange", 8], ["Excel", 9], ["Azure", 8], ["AWS", 8], ["Linux", 7], ["Notion", 9], ["Postman", 9], ["Git", 9]] },
+];
+const initials = (name) => name === "JavaScript" ? "JS" : name === "Scikit-learn" ? "SK" : name.slice(0, 2).toUpperCase();
+---
+<section class="section skills-section" id="technologies">
+  <div class="container">
+    <div class="section-heading"><p class="eyebrow">What I work with</p><h2 class="section-title">My <span>toolkit</span></h2><p class="section-copy">A mix of languages, libraries and tools I’ve used while learning, building and exploring new ideas.</p></div>
+    <div class="skill-tabs" role="tablist" aria-label="Skill categories">
+      {panels.map((panel, index) => <button class="skill-tab" type="button" role="tab" id={`tab-${panel.id}`} aria-controls={`panel-${panel.id}`} aria-selected={index === 0 ? "true" : "false"} tabindex={index === 0 ? 0 : -1} data-tab={panel.id}>{panel.label}</button>)}
+    </div>
+    {panels.map((panel, index) => <div class="skill-panel" role="tabpanel" id={`panel-${panel.id}`} aria-labelledby={`tab-${panel.id}`} data-panel={panel.id} hidden={index !== 0}>
+      <div class="skill-grid">{panel.skills.map(([name, level]) => <article class="skill-card">
+        <div class="skill-top"><span class="skill-mark" aria-hidden="true">{initials(name)}</span><span class="skill-name">{name}</span>{panel.id !== "other" && <span class="skill-value">{level * 10}%</span>}</div>
+        {panel.id !== "other" && <div class="skill-meter" role="meter" aria-label={`${name} familiarity`} aria-valuemin="0" aria-valuemax="100" aria-valuenow={level * 10}><span style={`--level:${level * 10}%`}></span></div>}
+      </article>)}</div>
+    </div>)}
+  </div>
+</section>
+<script>
+  const tabs = [...document.querySelectorAll(".skill-tab")];
+  const activate = (tab) => {
+    tabs.forEach((item) => {
+      const selected = item === tab;
+      item.setAttribute("aria-selected", String(selected));
+      item.tabIndex = selected ? 0 : -1;
+      const panel = document.querySelector(`#panel-${item.dataset.tab}`);
+      if (panel) panel.hidden = !selected;
+    });
+  };
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => activate(tab));
+    tab.addEventListener("keydown", (event) => {
+      if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+      event.preventDefault();
+      const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (index + (event.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length;
+      tabs[next].focus();
+      activate(tabs[next]);
+    });
+  });
+</script>
+<style>
+  .skills-section { background: linear-gradient(180deg, rgba(255,255,255,.015), transparent 55%); }
+  .skill-tabs { display: flex; width: fit-content; max-width: 100%; gap: 5px; padding: 5px; margin-bottom: 28px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,.025); }
+  .skill-tab { border: 0; border-radius: 999px; padding: 10px 18px; background: transparent; color: var(--muted); font-size: .9rem; cursor: pointer; transition: color .2s ease, background .2s ease; }
+  .skill-tab[aria-selected="true"] { color: #fff; background: var(--gradient); }
+  .skill-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .skill-card { min-height: 94px; display: flex; flex-direction: column; justify-content: center; gap: 12px; border: 1px solid var(--line); border-radius: 14px; padding: 16px; background: rgba(255,255,255,.028); transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+  .skill-card:hover { transform: translateY(-3px); border-color: rgba(19,173,199,.38); background: rgba(255,255,255,.045); }
+  .skill-top { display: flex; align-items: center; gap: 11px; }
+  .skill-mark { display: grid; place-items: center; flex: 0 0 34px; height: 34px; border: 1px solid rgba(19,173,199,.2); border-radius: 10px; background: rgba(19,173,199,.1); color: #67d3e4; font-size: .72rem; font-weight: 700; }
+  .skill-name { flex: 1; color: #e4e9f2; font-size: .9rem; }
+  .skill-value { color: #8491a5; font-size: .75rem; }
+  .skill-meter { height: 3px; overflow: hidden; border-radius: 9px; background: rgba(255,255,255,.08); }
+  .skill-meter span { display: block; width: var(--level); height: 100%; border-radius: inherit; background: var(--gradient); }
+  @media (max-width: 800px) { .skill-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .skill-tabs { width: 100%; justify-content: space-between; } .skill-tab { padding: 9px 11px; font-size: .8rem; } .skill-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; } .skill-card { padding: 13px 11px; } .skill-mark { flex-basis: 29px; height: 29px; } .skill-name { font-size: .82rem; } }
+</style>

@@ -1,0 +1,69 @@
+---
+const { title = "Juan Barrero — Software Developer", description = "Juan Barrero's software engineering portfolio." } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0f1624" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/images/Logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Doto:wght@500;600;700&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: dark;
+    --bg: #0f1624;
+    --bg-raised: #151e2f;
+    --text: #f3f6fb;
+    --muted: #a5afc0;
+    --line: rgba(222, 232, 255, .12);
+    --cyan: #13adc7;
+    --blue: #6978d1;
+    --violet: #945dd6;
+    --gradient: linear-gradient(115deg, var(--cyan), var(--blue) 58%, var(--violet));
+    --font-main: "Outfit", system-ui, sans-serif;
+    --font-display: "Doto", var(--font-main);
+    font-family: var(--font-main);
+    color: var(--text);
+    background: var(--bg);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; min-width: 320px; overflow-x: hidden; }
+  body, button, input, textarea { font-family: var(--font-main); }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  button { color: inherit; }
+  h1, h2, h3, p { margin-top: 0; }
+  ::selection { color: #fff; background: #6978d1; }
+  :focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; }
+  .container { width: min(1120px, calc(100% - 48px)); margin-inline: auto; }
+  .section { padding-block: clamp(76px, 10vw, 124px); }
+  .section-heading { margin-bottom: 46px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px; color: var(--cyan); font-size: .8rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+  .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--gradient); }
+  .section-title { margin: 0; font-size: clamp(2rem, 4vw, 3.15rem); letter-spacing: -.045em; line-height: 1.05; }
+  .section-title span { background: var(--gradient); color: transparent; background-clip: text; }
+  .section-copy { max-width: 660px; color: var(--muted); font-size: 1.05rem; line-height: 1.8; }
+  .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; gap: 10px; border: 0; border-radius: 999px; padding: 0 23px; background: var(--gradient); color: #fff; font-size: .95rem; font-weight: 700; box-shadow: 0 12px 30px rgba(19, 173, 199, .18); transition: transform .2s ease, box-shadow .2s ease, filter .2s ease; }
+  .button:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 16px 36px rgba(19, 173, 199, .26); }
+  .button-quiet { background: rgba(255, 255, 255, .04); border: 1px solid var(--line); box-shadow: none; }
+  .button-quiet:hover { border-color: rgba(19, 173, 199, .5); box-shadow: none; }
+  @media (max-width: 640px) { .container { width: min(100% - 36px, 520px); } }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+</style>

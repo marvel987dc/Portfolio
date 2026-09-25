@@ -1,0 +1,20 @@
+<footer class="site-footer">
+  <div class="container footer-main"><a class="brand" href="#intro"><span>Juan</span> Barrero<span class="brand-dot">.</span></a><p>A passionate developer creating innovative solutions and thoughtful user experiences.</p><nav aria-label="Footer navigation"><a href="#technologies">Skills</a><a href="#projects">Projects</a><a href="#about">About</a><a href="#contact">Contact</a></nav><div class="footer-social"><a href="https://github.com/marvel987dc" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GH</a><a href="https://linkedin.com/in/juan-barrero-66b407290" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a></div></div>
+  <div class="container footer-bottom"><span>© {new Date().getFullYear()} Juan Barrero</span><span>Made with <span class="heart">♥</span> and curiosity</span></div>
+</footer>
+<style>
+  .site-footer { border-top: 1px solid var(--line); background: #0b111c; }
+  .footer-main { display: grid; grid-template-columns: 1.1fr 1.6fr 1fr auto; align-items: center; gap: 28px; padding-block: 30px; }
+  .footer-main .brand { font-size: 1rem; }
+  .footer-main p { max-width: 280px; margin: 0; color: var(--muted); font-size: .8rem; line-height: 1.6; }
+  .footer-main nav { display: flex; flex-wrap: wrap; gap: 15px; }
+  .footer-main nav a { color: #8f9aab; font-size: .78rem; }
+  .footer-main nav a:hover { color: var(--cyan); }
+  .footer-social { display: flex; gap: 8px; }
+  .footer-social a { display: grid; place-items: center; width: 33px; height: 33px; border: 1px solid var(--line); border-radius: 50%; color: #c0cad9; font-size: .66rem; font-weight: 700; }
+  .footer-social a:hover { border-color: var(--cyan); color: var(--cyan); }
+  .footer-bottom { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid rgba(255,255,255,.06); padding-block: 16px 19px; color: #697589; font-size: .72rem; }
+  .heart { color: #e27b8a; }
+  @media (max-width: 800px) { .footer-main { grid-template-columns: 1fr 1fr; } .footer-main nav { grid-column: 1 / 2; } .footer-social { justify-content: end; } }
+  @media (max-width: 480px) { .footer-main { gap: 17px; } .footer-main p { grid-column: 1 / -1; } .footer-main nav { grid-column: 1 / -1; } .footer-social { grid-column: 1 / -1; justify-content: start; } }
+</style>

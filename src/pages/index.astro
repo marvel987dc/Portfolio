@@ -1,0 +1,23 @@
+---
+import SiteLayout from "../Components/SiteLayout.astro";
+import NavBar from "../Components/NavBar.astro";
+import Intro from "../Components/Intro.astro";
+import Skills from "../Components/Skills.astro";
+import Projects from "../Components/Projects.astro";
+import About from "../Components/About.astro";
+import Contact from "../Components/Contact.astro";
+import Footer from "../Components/Footer.astro";
+import CustomCursor from "../Components/CustomCursor.astro";
+---
+<SiteLayout title="Juan Barrero — Software Developer" description="AI and software engineering portfolio of Juan Barrero, featuring projects, skills, background and contact information.">
+  <CustomCursor />
+  <NavBar />
+  <main>
+    <Intro />
+    <Skills />
+    <Projects />
+    <About />
+    <Contact />
+  </main>
+  <Footer />
+</SiteLayout>

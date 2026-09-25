@@ -1,32 +1,15 @@
 {
-  "name": "portfolio",
+  "name": "juan-barrero-portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@emailjs/browser": "^4.4.1",
-    "netlify-cli": "^17.38.1",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-lazy-load-image-component": "^1.6.3",
-    "styled-components": "^6.1.13"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "devDependencies": {
-    "@eslint/js": "^9.15.0",
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
-    "@vitejs/plugin-react": "^4.3.4",
-    "eslint": "^9.15.0",
-    "eslint-plugin-react": "^7.37.2",
-    "eslint-plugin-react-hooks": "^5.0.0",
-    "eslint-plugin-react-refresh": "^0.4.14",
-    "globals": "^15.12.0",
-    "vite": "^6.0.1"
+    "@emailjs/browser": "^4.4.1",
+    "astro": "^7.3.5"
   }
 }

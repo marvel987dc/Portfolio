@@ -1,0 +1,51 @@
+---
+const hour = new Date().getHours();
+const greeting = hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
+---
+<section class="hero section" id="intro">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="status-dot"></span> {greeting} · Welcome to my portfolio</p>
+      <h1>Building thoughtful<br /><span>digital experiences.</span></h1>
+      <p class="hero-description">Aspiring AI-Software Engineering student with strong skills in C#, JavaScript, React, Python, Bash, HTML, CSS, Tailwind, Git, SQL, and Linux. Passionate about machine learning and creating useful, well-crafted projects.</p>
+      <div class="hero-actions"><a class="button" href="#projects">Explore my work <span aria-hidden="true">↘</span></a><a class="button button-quiet" href="/Data/Juan_Barrero_Resume%20-%20Copy.pdf" download="Juan_Barrero_Resume.pdf">Download résumé <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-meta"><span>AI &amp; Software Engineering</span><span class="meta-separator"></span><span>Centennial College graduate</span></div>
+    </div>
+    <div class="hero-art" aria-label="Juan's Animal Crossing inspired avatar">
+      <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-glow"></div>
+      <div class="avatar-frame"><img src="/images/animalCrossingChara.png" alt="Illustrated character avatar" width="400" height="400" fetchpriority="high" /></div>
+      <div class="floating-card"><span class="floating-icon">✦</span><span><strong>Curious by nature</strong><small>Always learning, always building</small></span></div>
+      <div class="code-chip" aria-hidden="true">&lt;code /&gt;</div>
+    </div>
+  </div>
+</section>
+<style>
+  .hero { position: relative; isolation: isolate; min-height: min(740px, calc(100svh - 76px)); display: grid; align-items: center; padding-top: 74px; padding-bottom: 74px; overflow: hidden; }
+  .hero::before { content: ""; position: absolute; z-index: -1; inset: 0; background: radial-gradient(ellipse at 79% 48%, rgba(105,120,209,.15), transparent 34%), radial-gradient(ellipse at 13% 15%, rgba(19,173,199,.08), transparent 30%); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(300px, .9fr); align-items: center; gap: 48px; }
+  .hero-copy { max-width: 650px; }
+  .hero .eyebrow { margin-bottom: 24px; letter-spacing: .06em; text-transform: none; font-size: .92rem; color: #cad2e1; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #65d6a5; box-shadow: 0 0 0 5px rgba(101,214,165,.1); }
+  .hero h1 { margin: 0 0 22px; font-size: clamp(3rem, 6.1vw, 5.25rem); line-height: .99; letter-spacing: -.065em; }
+  .hero h1 span { background: var(--gradient); color: transparent; background-clip: text; }
+  .hero-description { max-width: 590px; margin-bottom: 30px; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.1rem); line-height: 1.8; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-meta { display: flex; align-items: center; gap: 14px; margin-top: 34px; color: #8793a7; font-size: .86rem; }
+  .meta-separator { width: 4px; height: 4px; border-radius: 50%; background: var(--violet); }
+  .hero-art { position: relative; width: min(100%, 430px); aspect-ratio: 1; justify-self: center; display: grid; place-items: center; }
+  .hero-glow { position: absolute; width: 74%; aspect-ratio: 1; border-radius: 50%; background: linear-gradient(140deg, rgba(19,173,199,.22), rgba(148,93,214,.22)); filter: blur(48px); }
+  .avatar-frame { position: relative; width: min(69%, 290px); aspect-ratio: 1; border-radius: 50%; padding: 9px; background: linear-gradient(145deg, rgba(19,173,199,.9), rgba(105,120,209,.85) 55%, rgba(148,93,214,.9)); box-shadow: 0 22px 90px rgba(19,173,199,.18); animation: float 6s ease-in-out infinite; }
+  .avatar-frame img { width: 100%; height: 100%; border: 5px solid var(--bg); border-radius: 50%; object-fit: cover; }
+  .orbit { position: absolute; border: 1px solid rgba(203,216,242,.12); border-radius: 50%; transform: rotate(-24deg); }
+  .orbit-one { width: 92%; height: 64%; }
+  .orbit-two { width: 72%; height: 97%; transform: rotate(31deg); }
+  .floating-card { position: absolute; right: -1%; bottom: 17%; display: flex; align-items: center; gap: 11px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 13px 16px; background: rgba(21,30,47,.85); box-shadow: 0 14px 50px rgba(0,0,0,.25); backdrop-filter: blur(12px); }
+  .floating-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; background: rgba(19,173,199,.13); color: var(--cyan); font-size: 1.2rem; }
+  .floating-card strong, .floating-card small { display: block; }
+  .floating-card strong { font-size: .83rem; }
+  .floating-card small { margin-top: 3px; color: var(--muted); font-size: .72rem; }
+  .code-chip { position: absolute; left: 1%; top: 20%; border: 1px solid var(--line); border-radius: 999px; padding: 8px 13px; color: #c6b0ee; background: rgba(21,30,47,.8); font: .82rem ui-monospace, monospace; transform: rotate(-8deg); }
+  @keyframes float { 50% { transform: translateY(-9px); } }
+  @media (max-width: 800px) { .hero { min-height: auto; padding-top: 68px; } .hero-grid { grid-template-columns: 1fr; gap: 38px; } .hero-copy { max-width: 680px; } .hero-art { width: min(100%, 370px); grid-row: 1; } .hero h1 { font-size: clamp(2.8rem, 10vw, 4.3rem); } }
+  @media (max-width: 480px) { .hero-art { width: min(100%, 310px); } .floating-card { right: -2%; bottom: 11%; } .hero-meta { flex-wrap: wrap; } }
+</style>

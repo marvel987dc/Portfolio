@@ -1,0 +1,47 @@
+<section class="section about-section" id="about">
+  <div class="container about-grid">
+    <div class="about-copy">
+      <p class="eyebrow">A little about me</p><h2 class="section-title">Hi, I’m <span>Juan.</span></h2>
+      <p class="section-copy">I came to Canada from Colombia to pursue my dream of becoming a software engineer and to develop my skills in software development, design, critical thinking, and problem-solving.</p>
+      <p class="section-copy">I recently graduated from the AI – Software Engineering Technology program at Centennial College and am currently looking for new opportunities where I can contribute, continue learning, and grow as a developer. Beyond coding, I enjoy playing the guitar, drawing in my free time, and watching movies.</p>
+      <div class="about-stats"><div><strong>6<span>+</span></strong><small>Projects completed</small></div><div><strong>7<span>+</span></strong><small>Programming languages</small></div></div>
+      <div class="interests"><h3>Outside the editor</h3><div class="interest-list"><span>🎸 Music</span><span>🎨 Drawing</span><span>🎬 Movies</span><span>💻 Coding</span></div></div>
+    </div>
+    <div class="diploma-wrap"><button class="diploma-card" type="button" aria-label="Open diploma image in a larger view"><img src="/images/Diploma.jpeg" alt="Centennial College diploma certificate" loading="lazy" width="640" height="480" /><span class="diploma-caption"><span><strong>Centennial College</strong><small>AI – Software Engineering Technology</small></span><span class="zoom-icon" aria-hidden="true">↗</span></span></button><dialog class="diploma-dialog" aria-label="Diploma preview"><button class="dialog-close" type="button" aria-label="Close diploma preview">×</button><img src="/images/Diploma.jpeg" alt="Centennial College diploma certificate enlarged" /></dialog></div>
+  </div>
+</section>
+<script>
+  const dialog = document.querySelector(".diploma-dialog");
+  document.querySelector(".diploma-card")?.addEventListener("click", () => dialog?.showModal());
+  document.querySelector(".dialog-close")?.addEventListener("click", () => dialog?.close());
+  dialog?.addEventListener("click", (event) => { if (event.target === dialog) dialog.close(); });
+</script>
+<style>
+  .about-section { background: radial-gradient(ellipse at 88% 50%, rgba(105,120,209,.07), transparent 34%); }
+  .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: clamp(40px, 8vw, 105px); }
+  .about-copy .section-title { margin-bottom: 24px; }
+  .about-copy .section-copy { margin-bottom: 17px; font-size: 1rem; }
+  .about-stats { display: flex; gap: 46px; margin-top: 28px; }
+  .about-stats strong, .about-stats small { display: block; }
+  .about-stats strong { margin-bottom: 4px; font-size: 2rem; letter-spacing: -.05em; }
+  .about-stats strong span { color: var(--cyan); }
+  .about-stats small { color: var(--muted); font-size: .82rem; }
+  .interests { margin-top: 34px; }
+  .interests h3 { margin-bottom: 13px; font-size: .95rem; }
+  .interest-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .interest-list span { border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; background: rgba(255,255,255,.025); color: #c9d0dc; font-size: .8rem; }
+  .diploma-wrap { position: relative; }
+  .diploma-wrap::before { content: ""; position: absolute; inset: 16px -16px -16px 16px; border: 1px solid rgba(19,173,199,.36); border-radius: 18px; }
+  .diploma-card { position: relative; display: block; width: 100%; border: 1px solid var(--line); border-radius: 17px; padding: 10px; background: #172132; text-align: left; cursor: zoom-in; box-shadow: 0 24px 70px rgba(0,0,0,.26); }
+  .diploma-card img { width: 100%; aspect-ratio: 1.27; border-radius: 10px; object-fit: cover; object-position: center; }
+  .diploma-caption { display: flex; justify-content: space-between; align-items: center; padding: 15px 8px 6px; }
+  .diploma-caption strong, .diploma-caption small { display: block; }
+  .diploma-caption strong { font-size: .9rem; }
+  .diploma-caption small { margin-top: 5px; color: var(--muted); font-size: .75rem; }
+  .zoom-icon { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--line); border-radius: 50%; color: var(--cyan); }
+  .diploma-dialog { position: fixed; max-width: min(92vw, 900px); max-height: 90vh; border: 1px solid var(--line); border-radius: 15px; padding: 14px; background: #111a29; box-shadow: 0 30px 100px #000b; }
+  .diploma-dialog::backdrop { background: rgba(3,7,13,.86); backdrop-filter: blur(8px); }
+  .diploma-dialog img { max-height: calc(90vh - 28px); object-fit: contain; border-radius: 8px; }
+  .dialog-close { position: absolute; z-index: 1; top: 20px; right: 20px; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; background: rgba(15,22,36,.8); font-size: 1.4rem; cursor: pointer; }
+  @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr; gap: 42px; } .diploma-wrap { max-width: 560px; width: calc(100% - 16px); margin: 0 16px 16px 0; } }
+</style>
