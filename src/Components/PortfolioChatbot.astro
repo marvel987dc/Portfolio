@@ -1,0 +1,182 @@
+<div class="assistant-widget">
+  <aside class="assistant-panel" id="portfolio-assistant-panel" aria-label="Portfolio assistant" hidden>
+    <div class="assistant-header">
+      <span class="assistant-avatar" aria-hidden="true">JB</span>
+      <span class="assistant-heading"><strong>Portfolio assistant</strong><small><span class="online-dot"></span> Here to help</small></span>
+      <button class="assistant-close" type="button" aria-label="Close assistant">×</button>
+    </div>
+    <div class="assistant-messages" role="log" aria-live="polite" aria-relevant="additions text">
+      <article class="assistant-message assistant-reply"><p>Hi! Ask me about Juan’s résumé, skills, projects, education or how to get in touch.</p><time>Portfolio guide</time></article>
+      <div class="assistant-suggestions" aria-label="Suggested questions">
+        <button type="button" data-question="Tell me about Juan’s résumé">Résumé</button>
+        <button type="button" data-question="What skills does Juan have?">Skills</button>
+        <button type="button" data-question="What projects has Juan worked on?">Projects</button>
+        <button type="button" data-question="How can I contact Juan?">Contact</button>
+        <button type="button" data-question="Tell me about Juan’s experience">Experience</button>
+      </div>
+    </div>
+    <form class="assistant-form">
+      <label class="visually-hidden" for="assistant-question">Ask about Juan</label>
+      <input id="assistant-question" name="question" type="text" autocomplete="off" placeholder="Ask about Juan…" maxlength="280" required />
+      <button type="submit" aria-label="Send question"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.4 20.2 21 12 3.4 3.8 3 10.2l12.1 1.8L3 13.8l.4 6.4Z" fill="currentColor" /></svg></button>
+    </form>
+    <p class="assistant-note">Answers are based on this portfolio and résumé.</p>
+  </aside>
+  <button class="assistant-launcher" type="button" aria-expanded="false" aria-controls="portfolio-assistant-panel" aria-label="Open portfolio assistant">
+    <svg class="launcher-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2c-5 0-9 3.3-9 7.5 0 2.2 1.2 4.2 3.1 5.6l-.8 3.5 4.1-2.1c.8.2 1.7.4 2.6.4 5 0 9-3.3 9-7.4s-4-7.5-9-7.5Zm-4 8.2a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2Zm4.1 0a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2Zm4.1 0a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2Z" fill="currentColor" /></svg>
+    <svg class="launcher-close" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+    <span class="launcher-label">Ask me</span>
+  </button>
+</div>
+
+<script>
+  const widget = document.querySelector(".assistant-widget");
+  const launcher = widget?.querySelector(".assistant-launcher");
+  const panel = widget?.querySelector(".assistant-panel");
+  const closeButton = widget?.querySelector(".assistant-close");
+  const messageList = widget?.querySelector(".assistant-messages");
+  const form = widget?.querySelector(".assistant-form");
+  const input = widget?.querySelector("#assistant-question");
+  const suggestions = widget?.querySelector(".assistant-suggestions");
+
+  const setOpen = (open) => {
+    if (!launcher || !panel) return;
+    launcher.setAttribute("aria-expanded", String(open));
+    launcher.setAttribute("aria-label", open ? "Close portfolio assistant" : "Open portfolio assistant");
+    panel.hidden = !open;
+    if (open) input?.focus();
+  };
+
+  const appendMessage = (text, sender) => {
+    if (!messageList) return;
+    const article = document.createElement("article");
+    article.className = `assistant-message ${sender === "visitor" ? "assistant-user" : "assistant-reply"}`;
+    const paragraph = document.createElement("p");
+    paragraph.textContent = text;
+    article.append(paragraph);
+    messageList.append(article);
+    messageList.scrollTop = messageList.scrollHeight;
+  };
+
+  const answerQuestion = (question) => {
+    const normalized = question.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const spanish = /\b(que|quien|cual|como|donde|cuentame|resumen|habilidades|experiencia|proyectos|contactar|contacto|estudios|educacion|idiomas|trabajo|empleo|aprendizaje|maquina|inteligencia)\b/.test(normalized);
+    const answers = {
+      resume: spanish
+        ? "Juan es un desarrollador de software con formación en Ingeniería de Software e Inteligencia Artificial en Centennial College. Su résumé destaca desarrollo web y móvil, aprendizaje automático, big data y proyectos de software. Puedes descargar el résumé desde el botón de la página principal."
+        : "Juan is a software developer educated in Software Engineering Technology – Artificial Intelligence at Centennial College. His résumé highlights web and mobile development, machine learning, big data, and software projects. You can download it from the button near the top of this page.",
+      skills: spanish
+        ? "Entre sus habilidades están C#, Java, Python, Kotlin, SQL, JavaScript, HTML, CSS, Bash, React, React Native, NestJS, PySpark, Azure, MongoDB, Linux y Git. También tiene experiencia con herramientas de diseño, datos y APIs."
+        : "Juan’s skills include C#, Java, Python, Kotlin, SQL, JavaScript, HTML, CSS, Bash, React, React Native, NestJS, PySpark, Azure, MongoDB, Linux, and Git. He also has experience with design, data, and API tools.",
+      projects: spanish
+        ? "El résumé destaca TenaLink, un sistema descentralizado para validar referencias y certificados; Spam Detector, un clasificador de spam con procesamiento de lenguaje natural y Naive Bayes; y el rediseño de este portafolio. También participó en un proyecto full stack para personas mayores durante un hackathon."
+        : "The résumé highlights TenaLink, a decentralized system for validating references and certificates; Spam Detector, an NLP spam classifier using Naive Bayes; and this portfolio. Juan also helped build a full-stack system for seniors during a hackathon.",
+      experience: spanish
+        ? "El résumé presenta experiencia basada en proyectos y no incluye una sección separada de empleos. Juan desarrolló proyectos de software y obtuvo el segundo lugar en el hackathon WIMTACH/SRR 2024, donde colaboró en un sistema para personas mayores. Para preguntar por un puesto o colaboración concreta, puedes contactarlo directamente."
+        : "The résumé focuses on project experience and doesn’t include a separate employment-history section. Juan has built software projects and placed second in the 2024 WIMTACH/SRR hackathon, where he helped create a system for seniors. Contact him directly to ask about a specific role or collaboration.",
+      education: spanish
+        ? "Juan estudió el programa avanzado de Software Engineering Technology – Artificial Intelligence (Co-op) en Centennial College, Toronto. El résumé también indica un GPA de 3.8."
+        : "Juan studied the Software Engineering Technology – Artificial Intelligence (Co-op) advanced diploma program at Centennial College in Toronto. His résumé also lists a 3.8 GPA.",
+      achievement: spanish
+        ? "Juan obtuvo el segundo lugar en el hackathon WIMTACH/SRR 2024. Su equipo creó un sistema full stack para apoyar a personas mayores, con detección de caídas, alertas SMS y recordatorios diarios."
+        : "Juan placed second in the 2024 WIMTACH/SRR hackathon. His team built a full-stack support system for seniors, with fall detection, SMS alerts, and daily reminders.",
+      location: spanish
+        ? "Juan vive en Toronto, Canadá, y originalmente es de Colombia."
+        : "Juan is based in Toronto, Canada, and originally comes from Colombia.",
+      focus: spanish
+        ? "Sus áreas de interés incluyen desarrollo frontend y full stack, aplicaciones móviles, desarrollo backend, analítica de big data, inteligencia artificial, aprendizaje automático, redes neuronales, UI/UX y computación en la nube. Su perfil indica que está buscando nuevas oportunidades."
+        : "Juan’s areas of interest include frontend and full-stack development, mobile apps, backend development, big-data analytics, AI, machine learning, neural networks, UI/UX, and cloud computing. His portfolio says he is looking for new opportunities.",
+      machineLearning: spanish
+        ? "Su experiencia en aprendizaje automático incluye un detector de spam con procesamiento de lenguaje natural, CountVectorizer, TF-IDF y un clasificador Multinomial Naive Bayes. También estudió redes neuronales y herramientas de análisis de datos."
+        : "Juan’s machine-learning work includes an NLP spam detector using CountVectorizer, TF-IDF, and a Multinomial Naive Bayes classifier. He has also studied neural networks and data-analysis tools.",
+      languages: spanish
+        ? "Juan habla inglés y español."
+        : "Juan speaks English and Spanish.",
+      contact: spanish
+        ? "Puedes escribirle mediante el formulario de contacto al final de esta página, o conectar con él en LinkedIn y GitHub usando los enlaces del menú o del pie de página."
+        : "You can message Juan with the contact form at the bottom of this page, or connect with him on LinkedIn or GitHub using the links in the menu or footer.",
+      fallback: spanish
+        ? "Puedo responder sobre el résumé, habilidades, proyectos, estudios, experiencia, aprendizaje automático, idiomas o contacto. Prueba una de las preguntas sugeridas o formula la tuya de otra manera."
+        : "I can help with the résumé, skills, projects, education, experience, machine learning, languages, or contact details. Try one of the suggested questions or phrase yours another way.",
+    };
+
+    if (/\b(contact|reach|email|linkedin|github|hire|contactar|contacto|correo|escribir|contratar)\b/.test(normalized)) return answers.contact;
+    if (/\b(where|located|based|from|location|donde|ubicado|vive|vives|ciudad|origen)\b/.test(normalized)) return answers.location;
+    if (/\b(role|roles|position|opportunit\w*|career path|area|areas|field|interest|interests|looking|available|open to work|open to opportunities|buscando|disponible|puesto|puestos|oportunidad|oportunidades|areas de interes|intereses|especialidad)\b/.test(normalized)) return answers.focus;
+    if (/\b(experience|career|employment|work history|job|experiencia|empleo|trabajo|trayectoria)\b/.test(normalized)) return answers.experience;
+    if (/\b(project|tenalink|spam detector|hackathon|proyecto|proyectos)\b/.test(normalized)) return answers.projects;
+    if (/\b(education|college|degree|diploma|gpa|study|studies|studied|estudios|educacion|educación|carrera|centennial)\b/.test(normalized)) return answers.education;
+    if (/\b(machine learning|ai|artificial intelligence|neural|naive|tf.?idf|aprendizaje|inteligencia|redes neuronales|spam)\b/.test(normalized)) return answers.machineLearning;
+    if (/\b(language|languages|idioma|idiomas|speak|habla|hablar)\b/.test(normalized)) return answers.languages;
+    if (/\b(award|achievement|place|winner|premio|logro|segundo lugar)\b/.test(normalized)) return answers.achievement;
+    if (/\b(skill|skills|technology|technologies|stack|tech|habilidad|habilidades|tecnologia|tecnologias|herramientas)\b/.test(normalized)) return answers.skills;
+    if (/\b(resume|résumé|cv|curriculum|summary|profile|resumen|hoja de vida|perfil)\b/.test(normalized)) return answers.resume;
+    return answers.fallback;
+  };
+
+  const submitQuestion = (question) => {
+    const text = question.trim();
+    if (!text) return;
+    setOpen(true);
+    appendMessage(text, "visitor");
+    suggestions?.remove();
+    appendMessage(answerQuestion(text), "assistant");
+    if (input) input.value = "";
+  };
+
+  launcher?.addEventListener("click", () => setOpen(launcher.getAttribute("aria-expanded") !== "true"));
+  closeButton?.addEventListener("click", () => { setOpen(false); launcher?.focus(); });
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    submitQuestion(input?.value || "");
+  });
+  suggestions?.querySelectorAll("[data-question]").forEach((button) => {
+    button.addEventListener("click", () => submitQuestion(button.getAttribute("data-question") || ""));
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && panel && !panel.hidden) {
+      setOpen(false);
+      launcher?.focus();
+    }
+  });
+</script>
+
+<style>
+  .assistant-widget { position: fixed; z-index: 60; right: max(22px, env(safe-area-inset-right)); bottom: max(22px, env(safe-area-inset-bottom)); display: flex; flex-direction: column; align-items: flex-end; gap: 14px; font-family: var(--font-main); }
+  .assistant-launcher { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-width: 58px; height: 58px; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; padding: 0 18px; background: var(--gradient); color: #fff; box-shadow: 0 12px 36px rgba(16,16,31,.46), 0 0 26px rgba(19,173,199,.19); cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+  .assistant-launcher:hover { transform: translateY(-3px); box-shadow: 0 16px 42px rgba(16,16,31,.54), 0 0 32px rgba(19,173,199,.26); }
+  .assistant-launcher svg { width: 23px; height: 23px; }
+  .assistant-launcher[aria-expanded="true"] .launcher-chat, .launcher-close { display: none; }
+  .assistant-launcher[aria-expanded="true"] .launcher-close { display: block; }
+  .launcher-label { font-size: .88rem; font-weight: 700; }
+  .assistant-panel { display: flex; width: min(370px, calc(100vw - 28px)); height: min(530px, calc(100dvh - 112px)); min-height: 370px; flex-direction: column; overflow: hidden; border: 1px solid rgba(225,235,255,.16); border-radius: 20px; background: #111a29; box-shadow: 0 26px 90px rgba(0,0,0,.56), 0 0 36px rgba(105,120,209,.09); animation: panel-enter .18s ease-out; }
+  .assistant-panel[hidden] { display: none; }
+  .assistant-header { display: flex; align-items: center; gap: 11px; padding: 15px 16px; border-bottom: 1px solid rgba(255,255,255,.09); background: linear-gradient(120deg, rgba(19,173,199,.12), rgba(148,93,214,.13)); }
+  .assistant-avatar { display: grid; place-items: center; width: 39px; height: 39px; border: 1px solid rgba(255,255,255,.2); border-radius: 13px; background: var(--gradient); color: #fff; font-size: .74rem; font-weight: 700; }
+  .assistant-heading { flex: 1; }
+  .assistant-heading strong, .assistant-heading small { display: block; }
+  .assistant-heading strong { font-size: .88rem; }
+  .assistant-heading small { margin-top: 4px; color: var(--muted); font-size: .72rem; }
+  .online-dot { display: inline-block; width: 6px; height: 6px; margin-right: 5px; border-radius: 50%; background: #70d6a7; box-shadow: 0 0 8px rgba(112,214,167,.6); }
+  .assistant-close { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.1); border-radius: 50%; background: rgba(255,255,255,.035); color: #c5cedc; font-size: 1.3rem; cursor: pointer; }
+  .assistant-messages { display: flex; flex: 1; flex-direction: column; gap: 12px; overflow-y: auto; padding: 17px 14px; scrollbar-color: #36435a transparent; scrollbar-width: thin; }
+  .assistant-message { max-width: 91%; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 11px 12px; }
+  .assistant-message p { margin: 0; color: #e5eaf3; font-size: .83rem; line-height: 1.58; white-space: pre-wrap; }
+  .assistant-message time { display: block; margin-top: 7px; color: #8592a7; font-size: .65rem; }
+  .assistant-reply { align-self: flex-start; border-top-left-radius: 5px; background: #1a2638; }
+  .assistant-user { align-self: flex-end; border-color: rgba(19,173,199,.23); border-top-right-radius: 5px; background: rgba(19,173,199,.13); }
+  .assistant-suggestions { display: flex; flex-wrap: wrap; gap: 7px; padding-left: 1px; }
+  .assistant-suggestions button { border: 1px solid rgba(105,120,209,.32); border-radius: 999px; padding: 7px 10px; background: rgba(105,120,209,.08); color: #c4cafa; font-size: .72rem; cursor: pointer; transition: background .15s ease, border-color .15s ease; }
+  .assistant-suggestions button:hover { border-color: rgba(19,173,199,.55); background: rgba(19,173,199,.12); }
+  .assistant-form { display: flex; align-items: center; gap: 8px; margin: 0 12px; border: 1px solid rgba(255,255,255,.12); border-radius: 13px; padding: 6px 7px 6px 12px; background: rgba(4,9,17,.4); }
+  .assistant-form:focus-within { border-color: rgba(19,173,199,.56); }
+  .assistant-form input { flex: 1; width: 0; border: 0; outline: 0; background: transparent; color: var(--text); font-size: .85rem; }
+  .assistant-form input::placeholder { color: #758196; }
+  .assistant-form button { display: grid; place-items: center; flex: 0 0 36px; height: 36px; border: 0; border-radius: 10px; background: var(--gradient); color: white; cursor: pointer; }
+  .assistant-form button svg { width: 19px; height: 19px; }
+  .assistant-note { margin: 8px 14px 12px; color: #748196; font-size: .65rem; text-align: center; }
+  .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+  @keyframes panel-enter { from { opacity: 0; transform: translateY(8px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  @media (max-width: 480px) { .assistant-widget { right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); gap: 10px; } .assistant-panel { height: min(520px, calc(100dvh - 96px)); min-height: 350px; border-radius: 18px; } }
+  @media (prefers-reduced-motion: reduce) { .assistant-panel { animation: none; } }
+</style>
